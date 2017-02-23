@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="main.css" >
+</head>
+
+<body>
+
+<h1> Logga In</h1>
+
+ <div class="container">
+
+     <form action="LoginAdmin.html" method="get">
+      <div class="form-input">
+      <input type="text" name="username" placeholder="Användarnamn" required="required"/>
+      </div>
+
+      <div class="form-input">
+      <input type="password" name="password" placeholder="Löseord" required="required"/>
+      </div>
+
+      <input type="submit" class="login" value="Logga in" name="login">
+
+      <select name="loginAs">
+          <option value="student">Student</option>
+          <option value="lärare">Lärare</option>
+          <option value="admin">Admin</option>
+
+          </option>
+      </select>
+     </form>
+ </div>
+
+
+<!-- <input type="checkbox" name="loginAs" value="student" checked> Student -->
+     <!-- <input type="checkbox" name="loginAs" value="lärare"> Lärare -->
+     <!-- <input type="checkbox" name="loginAs" value="admin"> Admin -->
+
+
+
+
+</body>
+</html>
