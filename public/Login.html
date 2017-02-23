@@ -3,43 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="main.css" >
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" >
 </head>
-
 <body>
+    <header class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 pageDesign">
+    </header>
 
-<h1> Logga In</h1>
-
- <div class="container">
-
-     <form action="LoginAdmin.html" method="get">
-      <div class="form-input">
-      <input type="text" name="username" placeholder="Användarnamn" required="required"/>
-      </div>
-
-      <div class="form-input">
-      <input type="password" name="password" placeholder="Löseord" required="required"/>
-      </div>
-
-      <input type="submit" class="login" value="Logga in" name="login">
-
-      <select name="loginAs">
-          <option value="student">Student</option>
-          <option value="lärare">Lärare</option>
-          <option value="admin">Admin</option>
-
-          </option>
-      </select>
-     </form>
+<div>
+     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 sectionBorder">
+         <article class="loginDesign">
+             <h1>Logga In</h1>
+            <form method="get">
+                <p><input type="text" name="username" placeholder="Användarnamn" required="required"/></p>
+                <span id="feedback"></span>
+                <p><input type="password" name="password" placeholder="Löseord" required="required"/></p>
+             <select name="loginAs">
+                 <option value="student">Student</option>
+                 <option value="lärare">Lärare</option>
+                 <option value="admin">Admin</option>
+             </select>
+             <input type="submit" class="login" value="Logga in" name="login">
+            </form>
+         </article>
+     </section>
  </div>
-
 
 <!-- <input type="checkbox" name="loginAs" value="student" checked> Student -->
      <!-- <input type="checkbox" name="loginAs" value="lärare"> Lärare -->
      <!-- <input type="checkbox" name="loginAs" value="admin"> Admin -->
-
-
-
 
 </body>
 </html>

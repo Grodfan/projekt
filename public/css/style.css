@@ -1,0 +1,70 @@
+/*Settings on all pages*/
+body{
+    background-color: #c1bbbb;
+
+}
+a{
+    color: #000000;
+}
+header.pageDesign{
+    border-bottom: solid 1px;
+    width: 70%;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-left: 15%;
+}
+.greetingDesign{
+    border-top: solid 1px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.greetingDesign h1{
+    padding-right: 20%;
+    font-size: 30px;
+    text-align: right;
+}
+
+/*Admin index page*/
+.boxWithAllTestsDesign{
+    border: solid 1px;
+    margin-bottom: 10px;
+    height: 200px;
+    text-align: center;
+}
+.boxWithTestInformation{
+    border: solid 1px;
+    margin-left: 95px;
+    margin-bottom: 10px;
+}
+.createNewUserBox{
+    border: solid 1px;
+    margin-left: 95px;
+    margin-bottom: 10px;
+}
+.boxWithAllRegistered{
+    border: solid 1px;
+    margin-left: 95px;
+    margin-bottom: 10px;
+}
+
+/*Student index page*/
+.boxWithAllResults{
+    border: solid 1px;
+    margin-left: 95px;
+    margin-bottom: 10px;
+}
+
+/*Login page*/
+.sectionBorder{
+    border-top: solid 1px;
+    padding: 30px;
+}
+.loginDesign {
+    border: solid 1px;
+    border-color: #a8a8a8;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    background-color: #fffdfd;
+    width: 30%;
+    margin: 0 auto;
+}

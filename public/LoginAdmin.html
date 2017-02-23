@@ -3,40 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="main.css" >
-
+    <link rel="stylesheet" type="text/css" href="css/style.css" >
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css" />
 </head>
-
 <body>
+<div>
+    <header class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 pageDesign">
+    </header>
+</div>
 
-    <h1>Välkommen!</h1>
+<div>
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article class="greetingDesign">
+            <h1>Välkommen!</h1>
+            <button id="addStudent">Lägg till student</button>
+            <button id="addTeacher">Lägg till lärare</button>
+            <button id="addAdmin">Lägg till admin</button>
+            <!-- This is not needed right now <button id="allTest">Alla prov</button>-->
+            <button id="allStudent">Alla registrerade</button>
+            <!-- This is not needed right now <button id="results">Resultat</button>-->
+        </article>
+</section>
 
-<div class="containerAdmin">
-    <form action="">
-        <button id="addStudent"> Lägg till student</button>
-        <button id="addTeacher">Lägg till lärare</button>
-        <button id="newAdmin">Lägg till ny admin</button>
-        <button id="allTest">Alla prov</button>
-        <button id="allStudent">Alla studenter</button>
-        <button id="results">Resultat</button> <br> <br><br>
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article class="grid-35 mobile-grid-100 tablet-grid-35 boxWithAllTestsDesign">
+            <!--this part might be better if it's connected and printet out direct from javascript-->
+            <form method="get">
+                <p><a class="allTests" href="">Här ska varje prov synas under varandra</a></p>
+            </form>
+        </article>
 
+        <article id="getTestInformation" class="grid-55 mobile-grid-100 tablet-grid-55 boxWithTestInformation">
+            här hämtas och visas informationen om något test som man klickar på till vänster <----
+            <p></p>
+            Denna article kommer att döljar så länge man inte trycker på ett test
+        </article>
 
-    </form>
-    </div>
+        <article id="formForAddingAUser" class="grid-55 mobile-grid-100 tablet-grid-55 createNewUserBox">
+            <form>
+                Här ska ett formulär skrivas ut där du kan lägga till en användare.
+                Trycker man på "lägg till student" ska formuläret för student hämtas och visas i denna ruta.
+                Trycker man på "lägg till lärare" ska formuläret för lärare hämtas och visas i denna ruta.
+                Trycker man på "lägg till admin" ska formuläret för admin hämtas och visas i denna rutan.
+                <p></p>
+                Denna article kommer att döljas så länge man inte trycker på knappen.
+            </form>
+        </article>
 
-    <div class="containerButton">
-
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-             <input type="button" value="Namn"> <br>
-    </div>
-
-
-    <script src="main.js"></script>
+        <article class="grid-55 mobile-grid-100 tablet-grid-55 boxWithAllRegistered">
+            Här skrivs alla registrerade personer ut med dess information i en rad om man trycker på kanppen "alla registrerade"
+            (namn, email, klass, lärare/student/admin)
+            <p></p>
+            Denna article kommer inte att synas om man inte trycker på knappen.
+        </article>
+    </section>
+</div>
 </body>
 </html>
