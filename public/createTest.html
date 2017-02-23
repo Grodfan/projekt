@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skapa test</title>
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+<div>
+    <header class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 pageDesign">
+    </header>
+</div>
+
+<div>
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article class="grid-100 mobile-grid-100 tablet-grid-100">
+            <p>Ange testets namn: <input class="testName" type="text" name="testName">
+            Ange kursens namn: <input class="courseName" type="text" name="courseName">
+            Ange klassen: <input class="className"type="text" name="className"></p>
+        </article>
+    </section>
+
+    <section id="addQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article id="selectQuestionType">
+            <form method="post">
+            <p>Välj typ av fråga:
+                <select name="typeOfQuestion">
+                    <option value="empty"></option>
+                    <option value="multiple">Flervalsfråga</option>
+                    <option value="alternative">Alternativfråga</option>
+                    <option value="ranking">Rangordningsfråga</option>
+                </select>
+            </p>
+            </form>
+        </article>
+    </section>
+
+    <!--The different question alternatives-->
+    <section id="multipleAlternativeQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article>
+            <p>Flervalsfråga:</p>
+            <label>Fråga:<input type="text" name="questionDescribtion"></label>
+            <p>Ange hur många alternativ frågan ska ha:
+                <select name="amountOfAlternatives">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </p>
+        </article>
+        <!--Fix this part in javascript, type alternative and a correct answer box. This will be in a loop with amountOfAlternatives!-->
+        <article class="theAlternatives">
+            <form method="post">
+            <label>
+                Alternativ: <input type="text" name="alternativeAnswerText">
+                Rätt svar <input type="checkbox" name="correct" value="correctAnswer">
+            </label>
+            </form>
+        </article>
+    </section>
+
+        <section id="oneAlternativeQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article>
+            <p>Alternativfråga:</p>
+            <label>Fråga:<input type="text" name="questionDescribtion"></label>
+            <p>Ange hur många alternativ frågan ska ha:
+                <select name="amountOfAlternatives">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </p>
+        </article>
+            <!--Fix this part in javascript, type alternative and a correct answer box. This will be in a loop with amountOfAlternatives!-->
+            <article class="theAlternatives">
+                <form method="post">
+                <label>
+                    Alternativ: <input type="text" name="alternativeAnswerText">
+                    Rätt svar <input type="checkbox" name="correct" value="correctAnswer">
+                </label>
+                </form>
+            </article>
+        </section>
+
+    <section id="rankingQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article>
+            <p>Rangordningsfråga:</p>
+            <label>Fråga:<input type="text" name="questionDescribtion"></label>
+            <p>Ange hur många alternativ frågan ska ha:
+                <select name="amountOfAlternatives">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </p>
+        </article>
+        <!--Fix this part in javascript, type alternative and a correct answer box. This will be in a loop with amountOfAlternatives!-->
+        <article class="theAlternatives">
+            <form method="post">
+            <label>
+                Alternativ: <input type="text" name="alternativeAnswerText">
+            </label>
+            </form>
+        </article>
+    </section>
+
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article>
+            <label>
+                Självrättande prov<input type="checkbox" name="wantItSelfCorrectingTest" value="selfcorrecting">
+                Eleven ska kunna se resultatet och svaren direkt<input type="checkbox" name="approvalToSeTestResults" value="approvalTestResults">
+            </label>
+        </article>
+    </section>
+
+    <!--Change a question
+    <section id="changeQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article>
+
+        </article>
+    </section>-->
+
+    <!--Save the test-->
+    <section id="saveTest" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article>
+            <p id="testSavedMessage"></p>
+        </article>
+    </section>
+
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article class="grid-100 mobile-grid-100 tablet-grid-100">
+            <input type="submit" value="Lägg till fråga">
+            <input type="submit" value="Ändra testet">
+            <input type="submit" value="Spara test">
+            <a href="studentIndex.html"><input type="submit" value="Avbryt"></a>
+        </article>
+    </section>
+</div>
+
+<div>
+    <footer class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 pageDesign">
+    </footer>
+</div>
+</body>
+</html>
