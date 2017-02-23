@@ -54,6 +54,36 @@ header.pageDesign{
     margin-bottom: 10px;
 }
 
+/*test page*/
+.testPageDesign{
+    border-top: solid 1px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.questionDesign{
+    border: solid 1px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    margin-bottom: 5px;
+}
+
+/*testresults page*/
+.resultPageDesign{
+    border-top: solid 1px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+.resultBox{
+    border: solid 1px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+}
+.resultBox p {
+    padding-top: 10px;
+    padding-left: 5%;
+}
+
 /*Login page*/
 .sectionBorder{
     border-top: solid 1px;
