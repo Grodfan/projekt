@@ -19,20 +19,16 @@
 
     <section id="addQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
         <article>
-            <form method="post">
             <p>Ange testets namn: <input class="testName" type="text" name="testName">
                 Ange kursens namn: <input class="courseName" type="text" name="courseName">
-                <form method="get">
                 <!--All the classes will be collected from the database and shown in the drop down list-->
-                    Ange klassen:
-                        <select name="selectClass">
-                            <option value=""></option>
-                        </select></form></p>
-            </form>
+                Ange klassen:
+                <select name="selectClass">
+                    <option value=""></option>
+                </select></p>
         </article>
 
         <article id="selectQuestionType">
-            <form method="post">
             <p>Välj typ av fråga:
                 <select name="typeOfQuestion">
                     <option value="empty"></option>
@@ -41,7 +37,6 @@
                     <option value="ranking">Rangordningsfråga</option>
                 </select>
             </p>
-            </form>
         </article>
     </section>
 
@@ -62,12 +57,10 @@
         </article>
         <!--Fix this part in javascript, type alternative and a correct answer box. This will be in a loop with amountOfAlternatives!-->
         <article class="theAlternatives">
-            <form method="post">
             <label>
                 Alternativ: <input type="text" name="alternativeAnswerText">
                 Rätt svar <input type="checkbox" name="correct" value="correctAnswer">
             </label>
-            </form>
         </article>
     </section>
 
@@ -87,12 +80,10 @@
         </article>
             <!--Fix this part in javascript, type alternative and a correct answer box. This will be in a loop with amountOfAlternatives!-->
             <article class="theAlternatives">
-                <form method="post">
                 <label>
                     Alternativ: <input type="text" name="alternativeAnswerText">
                     Rätt svar <input type="checkbox" name="correct" value="correctAnswer">
                 </label>
-                </form>
             </article>
         </section>
 
@@ -112,11 +103,9 @@
         </article>
         <!--Fix this part in javascript, type alternative and a correct answer box. This will be in a loop with amountOfAlternatives!-->
         <article class="theAlternatives">
-            <form method="post">
             <label>
                 Alternativ: <input type="text" name="alternativeAnswerText">
             </label>
-            </form>
         </article>
     </section>
 

@@ -10,31 +10,26 @@
     <header class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 pageDesign">
     </header>
 
-<div id="selfCorrectingTest">
-
     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 resultPageDesign">
         <article class="grid-100 mobile-grid-100 tablet-grid-100">
             <a href="studentIndex.html">Huvudsidan</a>
         </article>
     </section>
 
+<div id="selfCorrectingTest">
+
     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 resultBox">
         <article>
-            <form method="get">
+            <!--The name of the test will be shown here when collecting it from the database-->
                 <h2 class="testName">Namnet på testet</h2>
-            </form>
         </article>
 
         <article>
-            <form method="get">
+            <!--The result-points of the test will be shown here-->
                 <p id="resultText"></p>
-            </form>
-        </article>
-        <article>
-            <form method="get">
             <p>Se rätt svar nedan:</p>
+            <!--The result of the test will be shown here, all the questions with the right answer and the wrong answers-->
                 <p class="theResults"></p>
-            </form>
         </article>
     </section>
 </div>
@@ -42,12 +37,8 @@
 <div id="nonSelfCorrectingTest">
     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 resultBox">
         <article>
-            <form method="get">
+                <!--The name of the test will be shown here when collecting it from the database-->
                 <h2 class="testName">Namnet på testet</h2>
-            </form>
-        </article>
-
-        <article>
             <p>Prover har skickats in.</p>
             <p>Ditt resultat och betyg kommer att synas på portalen så fort det är rättat!</p>
         </article>
