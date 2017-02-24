@@ -84,6 +84,16 @@ header.pageDesign{
     padding-left: 5%;
 }
 
+/*create test page*/
+#addQuestion{
+    border: solid 1px;
+    margin-bottom: 5px;
+}
+.createTestButtonDesign{
+    border: solid 1px;
+    margin-top: 5px;
+}
+
 /*Login page*/
 .sectionBorder{
     border-top: solid 1px;

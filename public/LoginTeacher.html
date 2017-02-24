@@ -3,22 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Teacher</title>
-    <link rel="stylesheet" type="text/css" href="main.css" >
+    <link rel="stylesheet" type="text/css" href="css/unsemantic-grid-responsive-tablet.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" >
 </head>
-
 <body>
 
-<h1>Välkommen!</h1>
+    <header class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 pageDesign">
+    </header>
 
-<div class="containerTeacher">
-    <form action="">
-        <button id="totalStudent">Alla studenter</button>
-        <button id="result">Resultat</button>
+<div>
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article class="greetingDesign">
+            <h1>Välkommen!</h1>
+            <a href="createTest.html"><button id="createTest">Skapa nytt prov</button></a>
+            <button id="allStudent">Alla studenter</button>
+            <button id="resultAndStatistic">Resultat och statistik</button>
+        </article>
+    </section>
 
-    </form>
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article class="grid-35 mobile-grid-100 tablet-grid-35 boxWithAllTestsDesign">
+            <!--this part might be better if it's connected and printet out direct from javascript-->
+            <form method="get">
+                <p><a class="allTests" href="">Här ska varje prov synas under varandra</a></p>
+            </form>
+        </article>
+
+        <article id="getTestInformation" class="grid-55 mobile-grid-100 tablet-grid-55 boxWithTestInformation">
+            här hämtas och visas informationen om något test som man klickar på till vänster <----
+            <p></p>
+            Denna article kommer att döljar så länge man inte trycker på ett test
+        </article>
+
+        <article id="getAllStudents" class="grid-55 mobile-grid-100 tablet-grid-55 boxWithAllRegistered">
+            Här skrivs alla registrerade personer ut med dess information i en rad om man trycker på kanppen "alla registrerade"
+            (namn, email, klass, lärare/student/admin)
+            <p></p>
+            Denna article kommer inte att synas om man inte trycker på knappen.
+        </article>
+    </section>
+
+</div>
 </div>
 
-
-    <script src="main.js"></script>
 </body>
 </html>
