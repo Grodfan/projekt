@@ -28,13 +28,16 @@ header.pageDesign{
 .boxWithAllTestsDesign{
     border: solid 1px;
     margin-bottom: 10px;
-    height: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
 }
 #content{
     border: solid 1px;
     margin-left: 95px;
     margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /*Student index page*/
