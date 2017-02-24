@@ -31,28 +31,14 @@ header.pageDesign{
     height: 200px;
     text-align: center;
 }
-.boxWithTestInformation{
-    border: solid 1px;
-    margin-left: 95px;
-    margin-bottom: 10px;
-}
-.createNewUserBox{
-    border: solid 1px;
-    margin-left: 95px;
-    margin-bottom: 10px;
-}
-.boxWithAllRegistered{
+#content{
     border: solid 1px;
     margin-left: 95px;
     margin-bottom: 10px;
 }
 
 /*Student index page*/
-.boxWithAllResults{
-    border: solid 1px;
-    margin-left: 95px;
-    margin-bottom: 10px;
-}
+
 
 /*test page*/
 .testPageDesign{
