@@ -14,13 +14,12 @@
      <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 sectionBorder">
          <article class="loginDesign">
              <h1>Logga In</h1>
-            <form method="get">
-                <p><input type="text" name="username" placeholder="Användarnamn" required="required"/></p>
-                <span id="feedback"></span>
-                <p><input type="password" name="password" placeholder="Löseord" required="required"/></p>
-             <select name="loginAs">
+            <form id="loginForm" method="post">
+                <span id="feedbackEmail"></span>
+                <p><input type="password" id='password' name="password" placeholder="Lösenord" required="required"/></p>
+             <select id="selectUserType" name="loginAs">
                  <option value="student">Student</option>
-                 <option value="lärare">Lärare</option>
+                 <option value="teacher">Lärare</option>
                  <option value="admin">Admin</option>
              </select>
              <input type="submit" class="login" value="Logga in" name="login">
@@ -32,6 +31,8 @@
 <!-- <input type="checkbox" name="loginAs" value="student" checked> Student -->
      <!-- <input type="checkbox" name="loginAs" value="lärare"> Lärare -->
      <!-- <input type="checkbox" name="loginAs" value="admin"> Admin -->
-
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/validateEmailLogin.js"></script>
+<script src="js/validatePasswordLogin.js"></script>
 </body>
 </html>
