@@ -15,8 +15,10 @@
          <article class="loginDesign">
              <h1>Logga In</h1>
             <form id="loginForm" method="post">
+                <p><input type="email" id="email" name="email" placeholder="Användarnamn" required="required"/></p>
                 <span id="feedbackEmail"></span>
                 <p><input type="password" id='password' name="password" placeholder="Lösenord" required="required"/></p>
+				<p><span id="feedbackPassword"></span></p>
              <select id="selectUserType" name="loginAs">
                  <option value="student">Student</option>
                  <option value="teacher">Lärare</option>
