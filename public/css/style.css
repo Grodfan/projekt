@@ -32,13 +32,20 @@ header.pageDesign{
     padding-bottom: 20px;
     text-align: center;
 }
+/*--Test---*/
+.box{
+    border: solid 1px;
+    margin-bottom: 10px;
+}
+/*
 #content{
     border: solid 1px;
     margin-left: 95px;
     margin-bottom: 10px;
     padding-top: 20px;
     padding-bottom: 20px;
-}
+}*/
+/*----test-stop--*/
 
 /*Student index page*/
 
