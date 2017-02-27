@@ -42,3 +42,4 @@ $('#approveSeeResult :checkbox').change(function() {
 
     return  approveBoxChecked;
 });
+

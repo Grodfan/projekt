@@ -17,7 +17,7 @@
         </article>
     </section>
 
-    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+    <section id="testContent" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
         <article class="grid-100 mobile-grid-100 tablet-grid-100">
             <p id="whatQuestionOfMaxQuestion">Fråga x av x</p>
         </article>
@@ -32,10 +32,17 @@
         </article>
         <article class="grid-100 mobile-grid-100 tablet-grid-100">
             <input type="submit" value="Nästa">
-            <input type="submit" value="Avsluta test">
+            <input id="finishTest" type="submit" value="Avsluta test">
         </article>
     </section>
+
+    <section id="content" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <!--Message after submit test-->
+    </section>
+
 </div>
 
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/selfCorrectingTest.js"></script>
 </body>
 </html>

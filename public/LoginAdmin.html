@@ -13,27 +13,21 @@
 </div>
 
 <div>
-    <header class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
-        <article class="greetingDesign">
-            <!--<h1>Välkommen!</h1>-->
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article id="greetingContent" class="greetingDesign">
+            <h1>Välkommen!</h1>
             <nav>
                 <button id="student">Student</button>
                 <button id="teacher">Lärare</button>
                 <button id="admin">Admin</button>
-                <!-- This is not needed right now <button id="allTest">Alla prov</button>-->
                 <button id="allRegisteredUsers">Alla registrerade</button>
-                <!-- This is not needed right now <button id="results">Resultat</button>-->
             </nav>
 			<span id="newButtons"></span>
         </article>
-</header>
+</section>
 
-    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
-        <article class="grid-35 mobile-grid-100 tablet-grid-35 boxWithAllTestsDesign">
-        </article>
-
-        <!--This part will not be shown before you press a button, than the information connected to that button will be shown in this part-->
-        <article id="content" class="grid-55 mobile-grid-100 tablet-grid-55 boxWithTestInformation">
+    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5 boxWithAllTestsDesign">
+        <article id="content" class="grid-100 mobile-grid-100 tablet-grid-100">
         </article>
     </section>
 </div>
@@ -44,5 +38,6 @@
 	<script src="js/addAdminForm.js"></script>
 	<script src="js/generatePassword.js"></script>
 	<script src="js/listClasses.js"></script>
+    <script src="js/adminIndex.js"></script>
 </body>
 </html>

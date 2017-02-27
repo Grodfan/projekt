@@ -12,28 +12,19 @@
 
 <div>
     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
-        <article class="greetingDesign">
-            <h1>Välkommen!</h1>
-            <input type="submit" value="Se resultat på alla självrättande test">
+        <article id="greetingContent" class="greetingDesign">
         </article>
     </section>
 
     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
-        <article>
-            <h3>Test du kan göra:</h3>
-        </article>
-    </section>
-
-    <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
+        <article id="testBoxContent" class="grid-100 mobile-grid-100 tablet-grid-100 boxWithAllTestsDesign">
         <!--Fix this part in javascript, all test this student can do will be shown here!-->
-        <article id="testForThisStudent" class="grid-35 mobile-grid-100 tablet-grid-35 boxWithAllTestsDesign">
-        </article>
-
-        <!--This part will not be shown before you press a button, than the information connected to that button will be shown in this part-->
-        <article id="content" class="grid-55 mobile-grid-100 tablet-grid-55">
-        </article>
+       </article>
     </section>
 </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/studentIndex.js"></script>
 
 </body>
 </html>
