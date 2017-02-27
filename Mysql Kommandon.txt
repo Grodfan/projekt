@@ -1,0 +1,54 @@
+
+/* ADMIN */
+/* INSERT/CREATE */
+INSERT into AdminUser (Name, Email, Password) VALUES('Value', 'Value', 'Value')
+
+
+/* Teacher */
+/* INSERT/CREATE */
+INSERT into Teacher (Name, Email, Password) VALUES('Value', 'Value', 'Value')
+
+
+/* Student */
+/* INSERT/CREATE */
+INSERT into Student (Name, Email, Password, Klass) VALUES('Value', 'Value', 'Value', 'Value')
+/* GET ALL STUDENTS*/
+SELECT * FROM Student
+
+
+/* TEST */
+/* INSERT/CREATE */
+Insert into Test (Name, LastDate, TimeForTestMINUTES) VALUES('Value', 'Value', 'Value')
+/* GET ONE TEST*/
+Select * from Test where TestId = 'Value'
+Select * from Test where Name = 'Value'
+
+/* Qustion */
+/* INSERT/CREATE */
+/* AnswerType YesNo, Order, Alter*/
+Insert into Question (TestId, AnswerType, QuestionText) VALUES('Value', 'Value', 'Value')
+/* SELECT QUESTIONS FOR ONE TEST*/
+Select * from Question where TestId = 'Value'
+
+/* ANSWERS */
+/* INSERT/CREATE */
+/*AnswerStatus false or true*/
+Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('Value', 'Value', 'Value')
+/* Select all answers for a question*/
+Select * from Answers where QuestionId = 'Value'
+
+
+/* STUDENT TEST */
+/* INSERT/CREATE */
+Insert into StudentTests (StudentId, TestId) VALUES('VALUE', 'VALUE')
+/* GET 1 TEST*/
+Select * from StudentTests where StudentTestsId = 'Value'
+
+
+/* STUDENT ANSWERS */
+/* INSERT/CREATE */
+Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('Value', 'Value', 'Value', 'Value')
+/*Get answers for 1 test for 1 student*/
+Select * from StudentAnswers where StudentId = 'Value' and TestId = 'Value'
+
+
