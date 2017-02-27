@@ -1,12 +1,12 @@
 /**
- * Created by Jonas on 2017-02-22.
+ * Created by Jonas on 2017-02-27.
  */
 var connection = require('../connection');
 
 function email() {
-    this.checkEmail = function (email, res) {
+    this.checkEmailTeacher = function (email, res) {
         connection.acquire(function (err, con) {
-            con.query('SELECT email FROM testTable WHERE email = ?', email, function (err, result) {
+            con.query('SELECT email FROM teacher WHERE email = ?', email, function (err, result) {
                 con.release();
                 if (err) {
                     console.log(err);

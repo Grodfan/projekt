@@ -2,9 +2,11 @@
  * Created by Grodfan on 2017-02-20.
  */
 var todo = require('./models/todo');
-var email = require ('./models/email');
 var password = require ('./models/password');
 var classes = require('./models/classes');
+var validateStudentEmail = require ('./models/validateStudentEmail');
+var validateAdminEmail = require('./models/validateAdminEmail');
+var validateTeacherEmail = require('./models/validateTeacherEmail');
 
 module.exports = {
   configure: function (app) {
@@ -16,8 +18,16 @@ module.exports = {
           todo.create(req.body, res);
       });
 
-      app.post('/email/', function (req,res) {
-          email.checkEmail(req.body.email, res);
+      app.post('/validateStudentEmail/', function (req,res) {
+          validateStudentEmail.checkEmailStudent(req.body.email, res);
+      });
+
+      app.post('/validateAdminEmail/', function (req,res) {
+          validateAdminEmail.checkEmailAdmin(req.body.email, res);
+      });
+
+      app.post('/validateTeacherEmail/', function (req,res) {
+          validateTeacherEmail.checkEmailTeacher(req.body.email, res);
       });
 
       app.post('/password/', function (req,res) {
