@@ -9,8 +9,10 @@ $(document).ready(function () {
         var newContent = '';
 
             newContent += '<div><p>Ange testets namn: <input id="testName" type="text" name="testName">';
-            newContent += ' Ange kursens namn: <input id="courseName" type="text" name="courseName">';
+            newContent += ' Ange kursens namn: <select id="courseName" name="courseName"></select>';
             newContent += ' Ange klassen: <select id="listClass" name="listClass"></select></p>';
+            newContent += '<p><form id="selfCorrectingCheckbox" method="post"> Provet ska vara självrättande <input type="checkbox" name="wantItSelfCorrectingTest" value="selfcorrecting"></form>';
+            newContent += '<form id="approveSeResult" method="post">Eleven ska kunna se resultatet och svaren direkt<input type="checkbox" name="approvalToSeTestResults" value="approvalTestResults"></form></p>';
             newContent += '<p>Välj typ av fråga: <select id="typeOfQuestion" name="typeOfQuestion">';
             newContent += '<option value="empty"></option>';
             newContent += '<option value="multiple">Flervalsfråga</option>';

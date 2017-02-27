@@ -20,12 +20,21 @@
     <section id="addQuestion" class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
         <article>
             <p>Ange testets namn: <input class="testName" type="text" name="testName">
-                Ange kursens namn: <input class="courseName" type="text" name="courseName">
+                Ange kursens namn:
+                <select name="selectCourse">
+                    <option value=""></option>
+                </select>
                 <!--All the classes will be collected from the database and shown in the drop down list-->
                 Ange klassen:
                 <select name="selectClass">
                     <option value=""></option>
-                </select></p>
+                </select>
+            <form id="selfCorrectingCheckbox" method="post">
+                Självrättande prov<input type="checkbox" name="wantItSelfCorrectingTest" value="selfcorrecting">
+            </form>
+            <form id="approveSeeResult" method="post">
+                Eleven ska kunna se resultatet och svaren direkt<input type="checkbox" name="approvalToSeeTestResults" value="approvalTestResults">
+            </form></p>
         </article>
 
         <article id="selectQuestionType">
@@ -111,10 +120,7 @@
 
     <section class="grid-90 prefix-5 suffix-5 mobile-grid-100 tablet-grid-90 prefix-5 suffix-5">
         <article>
-            <label>
-                Självrättande prov<input type="checkbox" name="wantItSelfCorrectingTest" value="selfcorrecting">
-                Eleven ska kunna se resultatet och svaren direkt<input type="checkbox" name="approvalToSeTestResults" value="approvalTestResults">
-            </label>
+
         </article>
     </section>
 
@@ -141,6 +147,9 @@
         </article>
     </section>
 </div>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/selfCorrectingTest.js"></script>
 
 </body>
 </html>
