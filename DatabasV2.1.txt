@@ -10,27 +10,30 @@ USE TestVerktyg;
 
 	CREATE TABLE AdminUser(
 		AdminId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		Name VARCHAR(50) NOT NULL,
+		FirstName VARCHAR(50) NOT NULL,
+		LastName VARCHAR(50) NOT NULL,
 		Email VARCHAR(50) NOT NULL,
 		Password VARCHAR(50) NOT NULL
 	); 
 	
 	CREATE TABLE Teacher(
 		TeacherId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		Name VARCHAR(50) NOT NULL,
+		FirstName VARCHAR(50) NOT NULL,
+		LastName VARCHAR(50) NOT NULL,
 		Email VARCHAR(50) NOT NULL,
 		Password VARCHAR(50) NOT NULL
 	); 
 	
 	CREATE TABLE Student(
 		StudentId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		Name VARCHAR(50) NOT NULL,
+		FirstName VARCHAR(50) NOT NULL,
+		LastName VARCHAR(50) NOT NULL,
 		Email VARCHAR(50) NOT NULL,
 		Password VARCHAR(50) NOT NULL,
 		Klass VARCHAR(50) NOT NULL 
 	); 
 
-	INSERT into AdminUser (Name, Email, PassWord) VALUES('Henrik', 'squaad1993@gmail.com', 'hejsan123');
+	INSERT into AdminUser (FirstName, LastName, Email, PassWord) VALUES('Henrik', 'Berglund', 'squaad1993@gmail.com', 'hejsan123');
 	 
 	/* Class är för att veta om det är Admin  / Teacher / Student*/
     /*lägga till en kalss tabell*/
@@ -39,6 +42,8 @@ USE TestVerktyg;
 		TestId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		Name VARCHAR(50) NOT NULL,
 		LastDate VARCHAR(50) NOT NULL,
+		SelfCorrect VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
+		SeeTestAfter VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
 		TimeForTestMINUTES VARCHAR(50) NOT NULL
 	); 
 	
