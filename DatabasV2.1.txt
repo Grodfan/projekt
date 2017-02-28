@@ -41,7 +41,7 @@ USE TestVerktyg;
     /*lägga till en kalss tabell*/
 	
 	CREATE TABLE Test(
-		TestId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		testId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		testName VARCHAR(50) NOT NULL,
 		/*LastDate VARCHAR(50) NOT NULL,*/
 		selfCorrect VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
@@ -56,10 +56,10 @@ USE TestVerktyg;
 	*/	
 	
 	CREATE TABLE Question(
-		QuestionId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		TestId INT(10) NOT NULL,
-		AnswerType VARCHAR(50) NOT NULL,
-		QuestionText VARCHAR(100) NOT NULL
+		questionId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		testId INT(10) NOT NULL,
+		typeOfQuestion VARCHAR(50) NOT NULL,
+		questionText VARCHAR(100) NOT NULL
 	); 
 	
 	CREATE TABLE Answers(
