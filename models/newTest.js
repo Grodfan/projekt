@@ -3,20 +3,20 @@
  */
 var connection = require('../connection');
 
-function Email() {
-    this.checkEmailAdmin = function (email, res) {
+function newTest() {
+    this.createTest = function (newTest, res) {
         connection.acquire(function (err, con) {
-            con.query('SELECT email FROM adminuser WHERE email = ?', email, function (err, result) {
+            con.query('INSERT INTO test SET ?', newTest, function (err, result) {
                 con.release();
                 if (err) {
                     console.log(err);
                     res.send({status: 1, message: 'fel'});
                 } else {
-                    res.send(result);
+                    res.send('Success');
                 }
             });
         });
     }
 }
 
-module.exports = new Email();
+module.exports = new newTest();

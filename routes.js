@@ -7,6 +7,7 @@ var classes = require('./models/classes');
 var validateStudentEmail = require ('./models/validateStudentEmail');
 var validateAdminEmail = require('./models/validateAdminEmail');
 var validateTeacherEmail = require('./models/validateTeacherEmail');
+var newTest = require('./models/newTest');
 
 module.exports = {
   configure: function (app) {
@@ -42,12 +43,16 @@ module.exports = {
           classes.delClasses(req.body.class,res);
       });
 
+      app.post('/newTest/', function (req,res) {
+          newTest.createTest(req.body, res);
+      });
+
       app.get('/add', function (req,res) {
-          res.sendfile(__dirname+'/public/add.html');
+          res.sendFile(__dirname+'/public/add.html');
       });
 
       app.get('/', function (req,res) {
-          res.sendfile(__dirname+'/public/Login.html');
+          res.sendFile(__dirname+'/public/Login.html');
       });
   }
 };
