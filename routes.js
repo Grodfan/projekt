@@ -9,6 +9,8 @@ var validateAdminEmail = require('./models/validateAdminEmail');
 var validateTeacherEmail = require('./models/validateTeacherEmail');
 var newTest = require('./models/newTest');
 
+var getDataMysql = require('./models/getDataMysql');
+
 module.exports = {
   configure: function (app) {
       app.get('/todo/', function (req,res) {
@@ -54,5 +56,44 @@ module.exports = {
       app.get('/', function (req,res) {
           res.sendFile(__dirname+'/public/Login.html');
       });
+
+      //----------------------------------------------------------------------------------------------------------------
+
+      /*GET DATA METHODS*/
+
+      app.get('/select*adminuser/', function(req, res) {
+          getDataMysql.getAdminUser(res);
+      });
+
+      app.get('/select*teacher/', function(req, res) {
+          getDataMysql.getTeacher(res);
+      });
+
+      app.get('/select*student/', function(req, res) {
+          getDataMysql.getStudent(res);
+      });
+
+      app.get('/select*test/', function(req, res) {
+          getDataMysql.getTest(res);
+      });
+
+      app.get('/select*question/', function(req, res) {
+          getDataMysql.getQuestion(res);
+      });
+
+      app.get('/select*answers/', function(req, res) {'' +
+          getDataMysql.getAnswers(res);
+      });
+
+      app.get('/select*studenttests/', function(req, res) {
+          getDataMysql.getStudentTests(res);
+      });
+
+      app.get('/select*studentanswers/', function(req, res) {
+          getDataMysql.getStudentAnswers(res);
+      });
+
+      //----------------------------------------------------------------------------------------------------------------
+
   }
 };
