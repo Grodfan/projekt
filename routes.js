@@ -10,6 +10,11 @@ var validateTeacherEmail = require('./models/validateTeacherEmail');
 var newTest = require('./models/newTest');
 
 var getDataMysql = require('./models/getDataMysql');
+var getTestId = require('./models/getTestId');
+var newQuestion = require('./models/newQuestion');
+var getQuestionId = require('./models/getQuestionId');
+var newAnswers = require('./models/newAnswers');
+var courseCodes = require('./models/courseCodes');
 
 module.exports = {
   configure: function (app) {
@@ -47,6 +52,26 @@ module.exports = {
 
       app.post('/newTest/', function (req,res) {
           newTest.createTest(req.body, res);
+      });
+
+      app.post('/newQuestion/', function (req,res) {
+          newQuestion.newQuestion(req.body, res);
+      });
+
+      app.post('/newAnswers/', function (req,res) {
+          newAnswers.newAnswers(req.body, res);
+      });
+
+      app.post('/getQuestionId/', function (req,res) {
+          getQuestionId.getQuestionId(req.body.questionText, res);
+      });
+
+      app.post('/getTestId/', function (req,res) {
+          getTestId.getTestId(req.body.testName, res);
+      });
+
+      app.get('/courseCodes/', function (req,res) {
+          courseCodes.getcourseCodes(res);
       });
 
       app.get('/add', function (req,res) {
