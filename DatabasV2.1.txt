@@ -126,5 +126,8 @@ USE TestVerktyg;
 		courseCode VARCHAR(30) NOT NULL
 	);
 	
+		classId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	);
+	
 	INSERT INTO CourseCodes(courseCode) VALUES('YJAV-WEB');
 	
