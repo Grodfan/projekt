@@ -55,18 +55,20 @@ $(document).ready(function () {
     /*SELECT * FROM ANSWER TABLE*/
     $.get('http://127.0.0.1:8000/select*answers/', function (result) {
 
+
         for (var i in result) {
             var attribute = result[i];
+
         }
 
     });
 
     /*SELECT * FROM STUDEENTTEST  TABLE*/
     $.get('http://127.0.0.1:8000/select*studenttests/', function (result) {
-
         for (var i in result) {
             var attribute = result[i];
         }
+
     });
 
     /*SELECT * FROM STUDENTANSWERS TABLE*/
@@ -80,4 +82,4 @@ $(document).ready(function () {
 
 
 
-}
+});
