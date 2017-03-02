@@ -36,22 +36,60 @@ header.pageDesign{
     margin-right: 5px;
 }
 /*--Test---*/
-.box{
+section.box{
     border: solid 1px;
     margin-bottom: 10px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
 }
 section.boxQ{
     border: solid 1px;
     margin-bottom: 10px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
 }
-/*
-#content{
-    border: solid 1px;
-    margin-left: 95px;
+input[type=number] {
+    width: 45px;
+}
+button.delete{
+    float: right;
+}
+.dateWidth{
+    width: 80px;
+}
+nav{
+    background-color: white;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 10px;
     margin-bottom: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}*/
+    padding-right: 45px;
+}
+
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    text-decoration: none;
+    color: black
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+li {
+    display: inline;
+    margin-right: 60px;
+}
+.floatRight{
+    float: right;
+}
+.hidden{
+    display:none;
+}
 /*----test-stop--*/
 
 /*Student index page*/

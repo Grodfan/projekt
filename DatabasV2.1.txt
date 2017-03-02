@@ -55,11 +55,12 @@ USE TestVerktyg;
 	CREATE TABLE Test(
 		testId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		testName VARCHAR(50) NOT NULL,
-		LastDate VARCHAR(50) NOT NULL,
+		courseName VARCHAR(30) NOT NULL,
 		selfCorrect VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
 		seeTestAfter VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
-		TimeForTestMINUTES VARCHAR(50) NOT NULL
-	);
+		lastDate VARCHAR(50) NOT NULL,
+		timeForTestMINUTES VARCHAR(50) NOT NULL
+	); 
 
 	Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName1', 'TestDate1', 'true', 'false', '120');
 	Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName2', 'TestDate2', 'false', 'true', '60');
@@ -74,10 +75,12 @@ USE TestVerktyg;
 	*/	
 	
 	CREATE TABLE Question(
-		QuestionId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		questionId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		testId INT(10) NOT NULL,
 		typeOfQuestion VARCHAR(50) NOT NULL,
-		questionText VARCHAR(100) NOT NULL
+		questionText VARCHAR(100) NOT NULL,
+		gradeG VARCHAR(10) NOT NULL,
+		gradeVg VARCHAR(10) NOT NULL
 	); 
 	
 	Insert into Question (testId, typeOfQuestion, QuestionText) VALUES('1', 'Type1', 'Bla Bla Bla 1');
@@ -86,13 +89,12 @@ USE TestVerktyg;
 
 	
 	CREATE TABLE Answers(
-		AnswersId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		QuestionId INT(10) NOT NULL,
-		AnswerStatus VARCHAR(50) NOT NULL,
-		AnswerText VARCHAR(50) NOT NULL
+		answersId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		questionId INT(10) NOT NULL,
+		answerStatus VARCHAR(50) NOT NULL,
+		answerText VARCHAR(50) NOT NULL
 	);
-
-
+	
 	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('1', 'false', 'Bla Bla Bla 1');
 	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('2', 'true', 'Bla Bla Bla 2');
 	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('3', 'false', 'Bla Bla Bla 3');
@@ -118,4 +120,11 @@ USE TestVerktyg;
 	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('1', '1', '1', '1');
 	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('2', '2', '2', '2');
 	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('3', '3', '3', '2');
+	
+	CREATE TABLE CourseCodes(
+		courseCodeId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		courseCode VARCHAR(30) NOT NULL
+	);
+	
+	INSERT INTO CourseCodes(courseCode) VALUES('YJAV-WEB');
 	
