@@ -11,41 +11,41 @@ USE TestVerktyg;
 
 
 	CREATE TABLE AdminUser(
-		AdminId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		FirstName VARCHAR(50) NOT NULL,
-		LastName VARCHAR(50) NOT NULL,
-		Email VARCHAR(50) NOT NULL,
-		Password VARCHAR(50) NOT NULL
+		adminId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		firstName VARCHAR(50) NOT NULL,
+		lastName VARCHAR(50) NOT NULL,
+		email VARCHAR(50) NOT NULL,
+		password VARCHAR(50) NOT NULL
 	); 
 
-	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin1Name', 'Admin1Name', 'Admin1Email', 'AdminPassword1');
-	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin2Name', 'Admin2Name', 'Admin2Email', 'AdminPassworw2');
-	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin3Name', 'Admin3Name', 'Admin3Email', 'AdminPassword3');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin1Name', 'Admin1Name', 'Admin1@admin.se', 'AdminPassword1');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin2Name', 'Admin2Name', 'Admin2@admin.se', 'AdminPassworw2');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin3Name', 'Admin3Name', 'Admin3@admin.se', 'AdminPassword3');
 	
 	CREATE TABLE Teacher(
-		TeacherId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		FirstName VARCHAR(50) NOT NULL,
-		LastName VARCHAR(50) NOT NULL,
-		Email VARCHAR(50) NOT NULL,
-		Password VARCHAR(50) NOT NULL
+		teacherId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		firstName VARCHAR(50) NOT NULL,
+		lastName VARCHAR(50) NOT NULL,
+		email VARCHAR(50) NOT NULL,
+		password VARCHAR(50) NOT NULL
 	); 
 
-	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher1', 'Teacher1',  'TeacherEmail1', 'TeacherPassword1');
-	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher2', 'Teacher2', 'TeacherEmail2', 'TeacherPassword2');
-	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher3', 'Teacher3', 'TeacherEmail3', 'TeacherPassword3');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher1', 'Teacher1',  'Teacher1@teacher.se', 'TeacherPassword1');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher2', 'Teacher2', 'Teacher2@teacher.se', 'TeacherPassword2');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher3', 'Teacher3', 'Teacher3@teacher.se', 'TeacherPassword3');
 	
 	CREATE TABLE Student(
-		StudentId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-		FirstName VARCHAR(50) NOT NULL,
-		LastName VARCHAR(50) NOT NULL,
+		studentId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		firstName VARCHAR(50) NOT NULL,
+		lastName VARCHAR(50) NOT NULL,
 		email VARCHAR(50) NOT NULL,
-		Password VARCHAR(50) NOT NULL,
-		Klass VARCHAR(50) NOT NULL 
+		password VARCHAR(50) NOT NULL,
+		klass VARCHAR(50) NOT NULL 
 	); 
 	
-	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName1', 'StudentName1', 'StudentEmail1', 'StudentPassword1', 'Klass1');
-	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName2', 'StudentName2', 'StudentEmail2', 'StudentPassword2', 'Klass2');
-	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName3', 'StudentName3','StudentEmail3', 'StudentPassword3', 'Klass3');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName1', 'StudentName1', 'Student1@student.se', 'StudentPassword1', 'Klass1');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName2', 'StudentName2', 'Student2@student.se', 'StudentPassword2', 'Klass2');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName3', 'StudentName3','Student3@student.se', 'StudentPassword3', 'Klass3');
 
 	
 	 

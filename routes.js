@@ -15,6 +15,9 @@ var newQuestion = require('./models/newQuestion');
 var getQuestionId = require('./models/getQuestionId');
 var newAnswers = require('./models/newAnswers');
 var courseCodes = require('./models/courseCodes');
+var teacherPassword = require('./models/validateTeacherPassword');
+var studentPassword = require('./models/validateStudentPassword');
+var adminPassword = require('./models/validedateAdminPassword');
 
 module.exports = {
   configure: function (app) {
@@ -36,6 +39,18 @@ module.exports = {
 
       app.post('/validateTeacherEmail/', function (req,res) {
           validateTeacherEmail.checkEmailTeacher(req.body.email, res);
+      });
+
+      app.post('/validateTeacherPassword/', function (req,res) {
+          teacherPassword.teacherPassword(req.body.email, res);
+      });
+
+      app.post('/validateStudentPassword/', function (req,res) {
+          studentPassword.studentPassword(req.body.email, res);
+      });
+
+      app.post('/validedateAdminPassword/', function (req,res) {
+          adminPassword.adminPassword(req.body.email, res);
       });
 
       app.post('/password/', function (req,res) {
@@ -74,12 +89,20 @@ module.exports = {
           courseCodes.getcourseCodes(res);
       });
 
-      app.get('/add', function (req,res) {
-          res.sendFile(__dirname+'/public/add.html');
+      app.get('/', function (req,res) {
+          res.sendfile(__dirname+'/public/index.html');
       });
 
-      app.get('/', function (req,res) {
-          res.sendFile(__dirname+'/public/Login.html');
+      app.get('/student', function (req,res) {
+          res.sendFile(__dirname+'/public/studentIndex.html');
+      });
+
+      app.get('/admin', function (req,res) {
+          res.sendFile(__dirname+'/public/adminIndex.html');
+      });
+
+      app.get('/teacher', function (req,res) {
+          res.sendFile(__dirname+'/public/teacherIndex.html');
       });
 
       //----------------------------------------------------------------------------------------------------------------
