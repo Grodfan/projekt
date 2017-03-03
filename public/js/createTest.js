@@ -6,6 +6,7 @@ $(document).ready(function () {
     var $content = $('#content');
 
     $('#createTest').click(function () {
+
         $content.empty();
         var newContent = '';
 
@@ -93,7 +94,6 @@ $(document).ready(function () {
         var selectedElement = $(this);
         var selectedValue = selectedElement.val();
         var typeOfQuestion = selectedElement.closest('.boxQ').find('.typeOfQuestion').val();
-        console.log(selectedElement.closest('.boxQ').find('.typeOfQuestion').val());
 
         selectedElement.parent().find(".removeAlternativeAnswer").remove();
 
@@ -142,51 +142,62 @@ $(document).ready(function () {
 
             testId = data[0].testId;
 
-            var typeOfQuestion ='';
-            var sqlQuestionText ='';
-            var questionText ='';
-            var sqlQuestionId = '';
-            var j = 0;
+           // var typeOfQuestion ='';
+           // var sqlQuestionText ='';
+            //var questionText ='';
+           // var sqlQuestionId = '';
+            var answer = 0;
             var total = 0;
+            var getQuestionId = 0;
 
             for(var i = 0; i <  $('.boxQ .typeOfQuestion').length; i++ ) {
-                typeOfQuestion = $('.boxQ .typeOfQuestion').eq(i).val();
-                questionText = $('.boxQ #questionText').eq(i).val();
+                var typeOfQuestion = $('.boxQ .typeOfQuestion').eq(i).val();
+                var questionText = $('.boxQ #questionText').eq(i).val();
                 var gradeG = $('.boxQ #gradeG').eq(i).is(':checked');
                 var gradeVg = $('.boxQ #gradeVg').eq(i).is(':checked');
 
-                sqlQuestionText = {'testId': testId, 'typeOfQuestion': typeOfQuestion, 'questionText': questionText,
+                var sqlQuestionText = {'testId': testId, 'typeOfQuestion': typeOfQuestion, 'questionText': questionText,
                                   'gradeG': gradeG, 'gradeVg':gradeVg};
-                sqlQuestionId = {'questionText': questionText};
 
                 $.post('http://127.0.0.1:8000/newQuestion/', sqlQuestionText, function () {
+                    var questionText = $('.boxQ #questionText').eq(getQuestionId).val();
+                    var sqlQuestionId = {'questionText': questionText};
+                    getQuestionId++;
                 $.post('http://127.0.0.1:8000/getQuestionId/', sqlQuestionId, function (dataQ) {
-                console.log('qu')
+                   // console.log('Qid: ' + dataQ[0].questionId);
                     var questionId = dataQ[0].questionId;
                     var forTotal = total;
 
                         for (var k = 0; k < $('.boxQ #answerText').length; k++) {
-                            var getTotalQuestions = $('.boxQ .amountOfAlternatives').eq(j).val();
+                            var getTotalQuestions = $('.boxQ .amountOfAlternatives').eq(answer).val();
                             var answerText = $('.boxQ #answerText').eq(forTotal).val();
                             var answerStatus = $('.boxQ #answerStatus').eq(forTotal).is(':checked');
                             var sqlAnswerText = {'questionId': questionId, 'answerStatus': answerStatus, 'answerText': answerText};
-
+                            console.log(sqlAnswerText);
                             $.post('http://127.0.0.1:8000/newAnswers/', sqlAnswerText, function () {});
 
-                            if (k < (getTotalQuestions - 1)) {
+                            if (k < (parseInt(getTotalQuestions)-1)) {
                                 forTotal++;
+                               // console.log('for ' + forTotal);
                             }
                             else {
+                                //console.log('break');
                                 break;
                             }
                         }
-                    j++;
-                    total += getTotalQuestions;
+                    answer++;
+                    total += parseInt(getTotalQuestions);
                 });
                 });
             }
         });
         });
+
+       //$(this).parent().detach();$(this).parent().detach();
+        $(this).parent().parent().find('.box, .boxQ').hide();
+        $(this).closest('p').hide();
+         var newContent = '<section class="boxQ"> Prov tillagt!</section>';
+        $content.append(newContent);
     });
 
     $content.on('click', '#newQuestion', function () {
