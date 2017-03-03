@@ -11,7 +11,7 @@ $("#email").blur(function(e) {
     var inputUserType = $('#selectUserType option:selected').val();
 
     if(inputUserType === 'student'){
-        $.post('http://127.0.0.1:8000/validateStudentEmail/',email,function (data) {
+        $.post('http://127.0.0.1:8000/checkStudentEmail/',email,function (data) {
             var status = data[0];
             console.log(data[0]);
             if(status !== undefined){
@@ -26,7 +26,7 @@ $("#email").blur(function(e) {
     }
     else if(inputUserType === 'teacher'){
 
-        $.post('http://127.0.0.1:8000/validateTeacherEmail/',email,function (data) {
+        $.post('http://127.0.0.1:8000/checkTeacherEmail/',email,function (data) {
             var status = data[0];
             console.log(data[0]);
             if(status !== undefined){
@@ -40,18 +40,17 @@ $("#email").blur(function(e) {
         });
     }
     else if(inputUserType === 'admin'){
-        $.post('http://127.0.0.1:8000/validateAdminEmail/',email,function (data) {
+        $.post('http://127.0.0.1:8000/checkAdminEmail/',email,function (data) {
             var status = data[0];
-    console.log(data[0]);
-    if(status !== undefined){
-        $feedbackEmail.hide();
+            console.log(data[0]);
+            if(status !== undefined){
+                $feedbackEmail.hide();
+            }
+             else if(status === undefined){
+             $feedbackEmail.show();
+             $feedbackEmail.text('Admin: ' + inputEmail + ' Finns ej!');
+             $email.val('');
+            }
+        });
     }
-    else if(status === undefined){
-        $feedbackEmail.show();
-        $feedbackEmail.text('Admin: ' + inputEmail + ' Finns ej!');
-        $email.val('');
-    }
-    });
-    }
-
 });
