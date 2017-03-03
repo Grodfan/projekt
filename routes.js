@@ -19,7 +19,6 @@ var adminPassword = require('./models/validedateAdminPassword');
 module.exports = {
   configure: function (app) {
 
-
       app.post('/validateTeacherPassword/', function (req,res) {
           teacherPassword.teacherPassword(req.body.email, res);
       });
