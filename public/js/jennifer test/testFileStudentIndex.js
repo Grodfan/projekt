@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     var activeQuestion = 0;
     var maxAmountOfQuestions = [];
-    var activeTypeOfQuestion = [];
+    var activeTypeOfQuestion = '';
     var activeQuestionId = 0;
 
     var activeAnswerStatus = '';
@@ -134,58 +134,55 @@ $(document).ready(function () {
 
                         console.log(attributeTest.testId);
                         testBoxContent.html(newContent);
-
                     }
-
-
                 }
-
             });
 
             //HÄMTA ALLA FRÅGOR TILL testet
             $.get('http://127.0.0.1:8000/select*question/', function (result) {
                 for (var i in result) {
                     var attributeQuestion = result[i];
-
                     //OM FRÅGAN ÄR HAR ID SOM ÄR TILL DETTA TESTTET
                     if (attributeQuestion.testId == activeButtonId) {
 
                         maxAmountOfQuestions+=attributeQuestion.questionId;
-
                         activeQuestionId = maxAmountOfQuestions[0].valueOf();
 
                         if(maxAmountOfQuestions[activeQuestion].valueOf() == activeQuestionId && maxAmountOfQuestions.length == activeQuestion+1){
                             console.log('detta skrivs endast en gång');
-
+                            activeTypeOfQuestion = attributeQuestion.typeOfQuestion;
                             newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="questionText">' + attributeQuestion.questionText + '</p></article>';
-
-                            console.log(attributeQuestion.testId);
-                            console.log(attributeQuestion.questionId);
-                            console.log(maxAmountOfQuestions);
-                            console.log(maxAmountOfQuestions.length);
                         }
-
-
                     }
-
-
                 }
-
+                testBoxContent.html(newContent);
             });
 
             $.get('http://127.0.0.1:8000/select*answers/', function (result) {
+                newContent +='<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign">';
                 for (var i in result) {
                     var attributeAnswer = result[i];
 
                     if (activeQuestionId == attributeAnswer.questionId){
                         console.log('det stämmer');
-                        newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">' + attributeAnswer.answerText +' </p></article>';
-
+                        if (activeTypeOfQuestion === 'multiple' || activeTypeOfQuestion === 'alternative'){
+                            console.log('multiple eller alternative');
+                            newContent += '<p id="alternativesForTheQuestion">' + attributeAnswer.answerText + '<input id="answerBox" type="checkbox" name="answerBox" value="answerBox">' + '</p>';
+                        }
+                        else if (activeTypeOfQuestion === 'ranking') {
+                            console.log('ranking');
+                            newContent += '<p id="alternativesForTheQuestion">' + attributeAnswer.answerText + '</p>';
+                        }
                     }
-
                 }
-
-                newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
+                newContent += '</article>';
+                newContent += '<p>Fråga ' + (activeQuestion+1) + ' av ' + maxAmountOfQuestions.length + '</p>';
+                if (activeQuestion + 1 < maxAmountOfQuestions.length){
+                    newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
+                }
+                else{
+                    newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
+                }
 
                 testBoxContent.html(newContent);
 
@@ -229,42 +226,39 @@ $(document).ready(function () {
                             if (maxAmountOfQuestions[activeQuestion].valueOf() == attributeQuestion.questionId) {
 
                                 activeQuestionId = maxAmountOfQuestions[activeQuestion].valueOf();
-
+                                activeTypeOfQuestion = attributeQuestion.typeOfQuestion;
                                 newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="questionText">' + attributeQuestion.questionText + '</p></article>';
 
-                                console.log(attributeQuestion.testId);
-                                console.log(attributeQuestion.questionId);
-                                console.log(maxAmountOfQuestions);
-                                console.log(maxAmountOfQuestions.length);
-
-                                testBoxContent.html(newContent);
-
                             }
-
-
                         }
-
+                        testBoxContent.html(newContent);
                     });
 
                     $.get('http://127.0.0.1:8000/select*answers/', function (result) {
-
+                        newContent +='<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign">';
                         for (var i in result) {
                             var attributeAnswer = result[i];
 
                             if (activeQuestionId == attributeAnswer.questionId){
                                 console.log('det stämmer');
-                                newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">' + attributeAnswer.answerText +' </p></article>';
-
+                                if (activeTypeOfQuestion === 'multiple' || activeTypeOfQuestion === 'alternative'){
+                                    console.log('multiple eller alternative');
+                                    newContent += '<p id="alternativesForTheQuestion">' + attributeAnswer.answerText + '<input id="answerBox" type="checkbox" name="answerBox" value="answerBox">' + '</p>';
+                                }
+                                else if (activeTypeOfQuestion === 'ranking'){
+                                    newContent += '<p id="alternativesForTheQuestion">' + attributeAnswer.answerText + '</p>';
+                                    console.log('ranking');
+                                }
                             }
-
                         }
-
-                        if (activeQuestion + 1 < maxAmountOfQuestions.length){
-                            newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
-                        }
-                        else{
-                            newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
-                        }
+                        newContent += '</article>';
+                            newContent += '<p>Fråga ' + (activeQuestion+1) + ' av ' + maxAmountOfQuestions.length + '</p>';
+                            if (activeQuestion + 1 < maxAmountOfQuestions.length){
+                                newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
+                            }
+                            else{
+                                newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
+                            }
 
                         testBoxContent.html(newContent);
 
