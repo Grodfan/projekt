@@ -6,7 +6,7 @@ var connection = require('../connection');
 function classes() {
     this.getClasses = function (res) {
         connection.acquire(function (err, con) {
-            con.query('SELECT class FROM classTable', function (err, result) {
+            con.query('SELECT listClass FROM listClasses', function (err, result) {
                 con.release();
                 res.send(result);
             });
