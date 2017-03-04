@@ -7,6 +7,7 @@ $(document).ready(function () {
     //The updating part of the page will be shown in this part
     var testBoxContent = $('#content');
     var welcomeContent = $('#greetingContent');
+    var testTimer = $('#timeTest');
 
     var newContent = '';
 
@@ -26,6 +27,10 @@ $(document).ready(function () {
 
     var selfCorrecting = '';
     var seeTest = '';
+
+    var inputTimeInMin = '';
+    var time = '';
+    var hour, min, sec;
 
 
 
@@ -89,8 +94,6 @@ $(document).ready(function () {
 
             var testId = attribute.testId;
 
-            console.log(testId + 'hej');
-
             for(var j = 0; j < activeTestId.length; j++){
 
                 if (activeTestId[j] == testId){
@@ -125,17 +128,35 @@ $(document).ready(function () {
                     //Om id på det test som du vill hämta matchar så hämtar du frågor och svar!
                     if (attributeTest.testId == activeButtonId) {
 
+                        inputTimeInMin = attributeTest.timeForTestMINUTES;
                         selfCorrecting = attributeTest.selfCorrect;
                         seeTest = attributeTest.seeTestAfter;
 
                         activeTestName = attributeTest.testName;
 
                         newContent += '<h2>' + activeTestName + '</h2>';
-
-                        console.log(attributeTest.testId);
                         testBoxContent.html(newContent);
+                        console.log(attributeTest.testId);
                     }
                 }
+                time = inputTimeInMin * 60000;
+                var startTimer = setInterval(function () {
+
+                    hour = Math.floor(time / 3600000);
+                    min = Math.floor(time % 3600000 / 60000);
+                    sec = time % 3600000 % 60000 / 1000;
+
+                    testTimer.text("Hour: " + hour + " Min: " + min + " Sek: " + sec);
+
+                    if (time <= 0){
+                        testTimer.hide();
+                        $("#done").text("Tiden ute!");
+                        clearInterval(startTimer);
+                    }
+
+                    time -= 1000;
+
+                }, 1000);
             });
 
             //HÄMTA ALLA FRÅGOR TILL testet
@@ -197,7 +218,7 @@ $(document).ready(function () {
 
                     newContent = '';
 
-                    $.get('http://127.0.0.1:8000/select*test/', function (result) {
+                    /*$.get('http://127.0.0.1:8000/select*test/', function (result) {
 
                         for (var i in result) {
                             var attributeTest = result[i];
@@ -215,7 +236,7 @@ $(document).ready(function () {
 
                         }
 
-                    });
+                    });*/
 
                     //HÄMTA ALLA FRÅGOR TILL testet
                     $.get('http://127.0.0.1:8000/select*question/', function (result) {
