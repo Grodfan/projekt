@@ -38,12 +38,13 @@ $(document).ready(function () {
                 newContent += '<li class="adminTest"><b>Se prov:</b> ' + seeTestAfter + '</li>';
                 newContent += '<li class="adminTest"><b>Datum:</b> ' + data[i].lastDate + '</li>';
                 newContent += '<li class="adminTest"><b>Tid:</b> ' + data[i].timeForTestMINUTES + ' min</li>';
+                newContent += '<button class="assign">Tilldela</button>'
                 newContent += '<select class="floatRight" id="listClass" name="klass"></select>';
-            $content.find('.testIdValue').hide();
                 newContent += '</ul></section>';
             }
 
             $content.append(newContent);
+            $content.find('.testIdValue').hide();
 
             $.get('http://127.0.0.1:8000/classes/', function (data) {
                 for(var i = 0; i < data.length; i++){
