@@ -10,20 +10,22 @@ $(document).ready(function () {
 
     var newContent = '';
 
-    var activeStudent = 'StudentEmail1';
-    var activeId;
+    var activeStudent = 'Student1@student.se';
+    var activeId = '';
     var activeTestId = '';
     var activeTestName = '';
     var activeButtonId = '';
 
-    var activeQuestion = 1;
+    var activeQuestion = 0;
     var maxAmountOfQuestions = [];
     var activeTypeOfQuestion = [];
-    var activeQuestionText = '';
-    var activeQuestionId = [];
+    var activeQuestionId = 0;
 
     var activeAnswerStatus = '';
-    var activeAnswerText = '';
+    var amountOfAnswers = [];
+
+    var selfCorrecting = '';
+    var seeTest = '';
 
 
 
@@ -43,8 +45,9 @@ $(document).ready(function () {
 
             var e_mail = attribute.email;
 
-            if (activeStudent === e_mail){
-                activeId = attribute.StudentId;
+            if (e_mail === activeStudent){
+                console.log(e_mail);
+                activeId = attribute.studentId;
             }
         }
 
@@ -88,13 +91,13 @@ $(document).ready(function () {
 
             console.log(testId + 'hej');
 
-            for(var j in result){
+            for(var j = 0; j < activeTestId.length; j++){
 
                 if (activeTestId[j] == testId){
                     console.log('äntligen');
                     activeTestName = attribute.testName;
 
-                    newContent += '<button class="newTest" id="'+testId+'">'+activeTestName+'</button>';
+                    newContent += '<button class="testButton" id="'+testId+'">'+activeTestName+'</button>';
                     console.log(activeTestName);
                 }
 
@@ -109,67 +112,58 @@ $(document).ready(function () {
 
 
         //Fjärde funktionen
-        $('.newTest').click(function () {
-
-            console.log('jag har tryckt på knappen');
+        $('.testButton').click(function () {
 
             activeButtonId = $(this).attr("id");
-
-            console.log(activeButtonId);
 
             newContent = '';
 
             $.get('http://127.0.0.1:8000/select*test/', function (result) {
-
                 for (var i in result) {
                     var attributeTest = result[i];
 
                     //Om id på det test som du vill hämta matchar så hämtar du frågor och svar!
                     if (attributeTest.testId == activeButtonId) {
 
+                        selfCorrecting = attributeTest.selfCorrect;
+                        seeTest = attributeTest.seeTestAfter;
+
+                        activeTestName = attributeTest.testName;
+
+                        newContent += '<h2>' + activeTestName + '</h2>';
+
                         console.log(attributeTest.testId);
+                        testBoxContent.html(newContent);
+
+                    }
 
 
-                        //HÄMTA ALLA FRÅGOR TILL testet
-                        $.get('http://127.0.0.1:8000/select*question/', function (result) {
-                            for (var i in result) {
-                                var attributeQuestion = result[i];
+                }
 
-                                //OM FRÅGAN ÄR HAR ID SOM ÄR TILL DETTA TESTTET
-                                if (attributeQuestion.testId == activeButtonId) {
+            });
 
+            //HÄMTA ALLA FRÅGOR TILL testet
+            $.get('http://127.0.0.1:8000/select*question/', function (result) {
+                for (var i in result) {
+                    var attributeQuestion = result[i];
 
+                    //OM FRÅGAN ÄR HAR ID SOM ÄR TILL DETTA TESTTET
+                    if (attributeQuestion.testId == activeButtonId) {
 
-                                    console.log(attributeQuestion.testId);
+                        maxAmountOfQuestions+=attributeQuestion.questionId;
 
+                        activeQuestionId = maxAmountOfQuestions[0].valueOf();
 
-                                    $.get('http://127.0.0.1:8000/select*answers/', function (result) {
-                                        for (var i in result) {
-                                            var attributeAnswer = result[i];
+                        if(maxAmountOfQuestions[activeQuestion].valueOf() == activeQuestionId && maxAmountOfQuestions.length == activeQuestion+1){
+                            console.log('detta skrivs endast en gång');
 
-                                            if (attributeQuestion.QuestionId == attributeAnswer.QuestionId) {
+                            newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="questionText">' + attributeQuestion.questionText + '</p></article>';
 
-                                                newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">' + attributeAnswer.AnswerText +' </p></article>';
-
-                                                console.log(attributeQuestion.QuestionId);
-
-                                                console.log(attributeAnswer.QuestionId);
-                                                //HÄMTA UT SSVAR TILL FRÅGA
-                                            }
-
-                                        }
-
-                                        testBoxContent.html(newContent);
-
-                                    });
-
-
-                                }
-
-
-                            }
-
-                        });
+                            console.log(attributeQuestion.testId);
+                            console.log(attributeQuestion.questionId);
+                            console.log(maxAmountOfQuestions);
+                            console.log(maxAmountOfQuestions.length);
+                        }
 
 
                     }
@@ -179,38 +173,149 @@ $(document).ready(function () {
 
             });
 
+            $.get('http://127.0.0.1:8000/select*answers/', function (result) {
+                for (var i in result) {
+                    var attributeAnswer = result[i];
 
+                    if (activeQuestionId == attributeAnswer.questionId){
+                        console.log('det stämmer');
+                        newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">' + attributeAnswer.answerText +' </p></article>';
 
-            /*for(var i in result){
-                attribute = result[i];
+                    }
 
-                testId = attribute.testId;
-
-                console.log('jag kommer hit ');
-                if (activeButtonId == testId){
-                    activeTestName = attribute.testName;
-                    console.log(activeTestName);
                 }
 
-            }
+                newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
 
-            newContent += '<h2>' + activeTestName + '</h2>' ;
-            newContent += '<p id="whatQuestionOfMaxQuestion">' + 'Fråga ' + activeQuestion + ' av ' + maxAmountOfQuestions.length +'</p>';
-            newContent += '<p id="timeLeft">Detta är tiden du har kvar att avsluta tiden på</p>';
-            if (activeQuestion == maxAmountOfQuestions.length){
-                newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
-            }
-            else{
-                newContent += '<input id="nextQuestion" type="submit" value="Nästa"><input id="finishTest" type="submit" value="Avsluta test">';
-            }
+                testBoxContent.html(newContent);
 
-            console.log(activeButtonId);
-            testBoxContent.html(newContent);
+                //Clicking on the next button
+                $(document).on('click', '#nextQuestion', function () {
+                    console.log('nästa fråga');
 
-            $('#nextQuestion').click(function () {
-                activeQuestion++;
-                console.log(activeQuestion);
-            }); */
+                    activeQuestion++;
+                    activeQuestionId++;
+
+                    console.log(activeQuestion);
+
+                    newContent = '';
+
+                    $.get('http://127.0.0.1:8000/select*test/', function (result) {
+
+                        for (var i in result) {
+                            var attributeTest = result[i];
+
+                            //Om id på det test som du vill hämta matchar så hämtar du frågor och svar!
+                            if (attributeTest.testId == activeButtonId) {
+
+                                newContent += '<h2>' + activeTestName + '</h2>';
+
+                                console.log(attributeTest.testId);
+
+                                testBoxContent.html(newContent);
+
+                            }
+
+                        }
+
+                    });
+
+                    //HÄMTA ALLA FRÅGOR TILL testet
+                    $.get('http://127.0.0.1:8000/select*question/', function (result) {
+                        for (var i in result) {
+                            var attributeQuestion = result[i];
+
+                            //OM FRÅGAN ÄR HAR ID SOM ÄR TILL DETTA TESTTET
+                            if (maxAmountOfQuestions[activeQuestion].valueOf() == attributeQuestion.questionId) {
+
+                                activeQuestionId = maxAmountOfQuestions[activeQuestion].valueOf();
+
+                                newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="questionText">' + attributeQuestion.questionText + '</p></article>';
+
+                                console.log(attributeQuestion.testId);
+                                console.log(attributeQuestion.questionId);
+                                console.log(maxAmountOfQuestions);
+                                console.log(maxAmountOfQuestions.length);
+
+                                testBoxContent.html(newContent);
+
+                            }
+
+
+                        }
+
+                    });
+
+                    $.get('http://127.0.0.1:8000/select*answers/', function (result) {
+
+                        for (var i in result) {
+                            var attributeAnswer = result[i];
+
+                            if (activeQuestionId == attributeAnswer.questionId){
+                                console.log('det stämmer');
+                                newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">' + attributeAnswer.answerText +' </p></article>';
+
+                            }
+
+                        }
+
+                        if (activeQuestion + 1 < maxAmountOfQuestions.length){
+                            newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
+                        }
+                        else{
+                            newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
+                        }
+
+                        testBoxContent.html(newContent);
+
+
+                        //Clicking on finish test button
+                        $(document).on('click', '#finishTest', function () {
+                            console.log('klickar på avsluta test');
+
+                            newContent = '';
+
+                            if (selfCorrecting === 'true' && seeTest === 'false'){
+                                console.log('självrättande ja, se resultat nej');
+
+                                newContent += '<h2 class="testName">' + activeTestName + '</h2>';
+                                newContent += '<p>Prover har skickats in.</p>';
+                                newContent += '<p>Ditt resultat och betyg kommer att synas på portalen när tiden för provet har gått ut!</p>';
+                                newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
+                            }
+                            else if (selfCorrecting === 'true' && seeTest === 'true'){
+                                console.log('självrättande ja, se resultat ja');
+
+                                newContent += '<h2 class="testName">' + activeTestName + '</h2>';
+                                newContent += '<p id="resultText"> 10 rätt av 25 möjliga</p>';
+                                newContent += '<p>Se rätt svar nedan:</p>';
+                                newContent += '<p class="theResults"> varje fråga med rätt och fel svar</p>';
+                                newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
+                            }
+
+                            else if (selfCorrecting === 'false' && seeTest === 'false'){
+                                console.log('självrättande nej, se resultat nej');
+
+                                newContent += '<h2 class="testName">' + activeTestName + '</h2>';
+                                newContent += '<p>Prover har skickats in.</p>';
+                                newContent += '<p>Ditt resultat och betyg kommer att synas på portalen så fort provet är rättat!</p>';
+                                newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
+                            }
+
+                            testBoxContent.html(newContent);
+
+                            $('#homePage').click(function () {
+                                console.log('reagerar');
+                                location.reload();
+                            });
+
+                        });
+
+                    });
+
+                    });
+
+                });
 
         });
 
@@ -219,31 +324,3 @@ $(document).ready(function () {
     //Avslut på dokument-funktionen!!
 
 });
-
-/*
-newContent += '<h2>' + testName + '</h2>' ;
-newContent += '<p id="whatQuestionOfMaxQuestion">' + 'Fråga ' + activeQuestion + ' av ' + maxAmountOfQuestions.length +'</p>';
-newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="questionText">Detta är frågan, vad är ditt svar?</p></article>';
-newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">Detta är dina alternativ.</p></article>';
-newContent += '<p id="timeLeft">Detta är tiden du har kvar att avsluta tiden på</p>';
-newContent += '<input id="nextQuestion" type="submit" value="Nästa"><input id="finishTest" type="submit" value="Avsluta test">';
-    */
-
-/*
- console.log('jag kommer hit ');
- if (activeButtonId == testId){
- activeTestName = attribute.testName;
- console.log(activeTestName);
- newContent += '<h2>' + activeTestName + '</h2>' ;
- newContent += '<p id="whatQuestionOfMaxQuestion">' + 'Fråga ' + activeQuestion + ' av ' + maxAmountOfQuestions.length +'</p>';
- newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="questionText">' + activeQuestionText + '</p></article>';
- // newContent += '<article class="grid-50 mobile-grid-100 tablet-grid-50 questionDesign"><p id="alternativesForTheQuestion">' + activeAnswerText[i] +' </p></article>';
- // newContent += '<p id="timeLeft">Detta är tiden du har kvar att avsluta tiden på</p>';
- if (activeQuestion == maxAmountOfQuestions.length){
- newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
- }
- else{
- newContent += '<input id="nextQuestion" type="submit" value="Nästa"><input id="finishTest" type="submit" value="Avsluta test">';
- }
- }
-*/
