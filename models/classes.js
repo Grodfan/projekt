@@ -15,7 +15,7 @@ function classes() {
     
     this.delClasses = function (classes, res) {
         connection.acquire(function (err, con) {
-            con.query('DELETE FROM classTable WHERE class = ?', [classes], function (err, result) {
+            con.query('DELETE FROM listClasses WHERE listClass = ?', [classes], function (err, result) {
               con.release();
                 if (err) {
                     console.log(err);

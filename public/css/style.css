@@ -54,6 +54,10 @@ input[type=number] {
 button.delete{
     float: right;
 }
+button.assign{
+    float: right;
+    margin-left: 20px;
+}
 .dateWidth{
     width: 80px;
 }

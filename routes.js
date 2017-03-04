@@ -15,9 +15,18 @@ var email = require('./models/email');
 var teacherPassword = require('./models/validateTeacherPassword');
 var studentPassword = require('./models/validateStudentPassword');
 var adminPassword = require('./models/validedateAdminPassword');
+var admin = require('./models/admin');
 
 module.exports = {
   configure: function (app) {
+
+      app.post('/getStudentIds/', function (req,res) {
+          admin.getStudentIds(req.body.klass, res);
+      });
+
+      app.post('/setStudentsTest/', function (req,res) {
+          admin.setStudentsTest(req.body, res);
+      });
 
       app.post('/validateTeacherPassword/', function (req,res) {
           teacherPassword.teacherPassword(req.body.email, res);
