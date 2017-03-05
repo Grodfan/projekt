@@ -140,23 +140,6 @@ $(document).ready(function () {
                     }
                 }
                 time = inputTimeInMin * 60000;
-                var startTimer = setInterval(function () {
-
-                    hour = Math.floor(time / 3600000);
-                    min = Math.floor(time % 3600000 / 60000);
-                    sec = time % 3600000 % 60000 / 1000;
-
-                    testTimer.text("Hour: " + hour + " Min: " + min + " Sek: " + sec);
-
-                    if (time <= 0){
-                        testTimer.hide();
-                        $("#done").text("Tiden ute!");
-                        clearInterval(startTimer);
-                    }
-
-                    time -= 1000;
-
-                }, 1000);
             });
 
             //HÄMTA ALLA FRÅGOR TILL testet
@@ -199,7 +182,7 @@ $(document).ready(function () {
                 newContent += '</article>';
                 newContent += '<p>Fråga ' + (activeQuestion+1) + ' av ' + maxAmountOfQuestions.length + '</p>';
                 if (activeQuestion + 1 < maxAmountOfQuestions.length){
-                    newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
+                    newContent += '<input id="nextQuestion" type="submit" value="Nästa"><input id="finishTest" type="submit" value="Avsluta test">';
                 }
                 else{
                     newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
@@ -218,7 +201,7 @@ $(document).ready(function () {
 
                     newContent = '';
 
-                    /*$.get('http://127.0.0.1:8000/select*test/', function (result) {
+                    $.get('http://127.0.0.1:8000/select*test/', function (result) {
 
                         for (var i in result) {
                             var attributeTest = result[i];
@@ -236,7 +219,7 @@ $(document).ready(function () {
 
                         }
 
-                    });*/
+                    });
 
                     //HÄMTA ALLA FRÅGOR TILL testet
                     $.get('http://127.0.0.1:8000/select*question/', function (result) {
@@ -275,7 +258,7 @@ $(document).ready(function () {
                         newContent += '</article>';
                             newContent += '<p>Fråga ' + (activeQuestion+1) + ' av ' + maxAmountOfQuestions.length + '</p>';
                             if (activeQuestion + 1 < maxAmountOfQuestions.length){
-                                newContent += '<input id="nextQuestion" type="submit" value="Nästa">';
+                                newContent += '<input id="nextQuestion" type="submit" value="Nästa"><input id="finishTest" type="submit" value="Avsluta test">';
                             }
                             else{
                                 newContent += '<input id="finishTest" type="submit" value="Avsluta test">';
@@ -283,54 +266,72 @@ $(document).ready(function () {
 
                         testBoxContent.html(newContent);
 
-
-                        //Clicking on finish test button
-                        $(document).on('click', '#finishTest', function () {
-                            console.log('klickar på avsluta test');
-
-                            newContent = '';
-
-                            if (selfCorrecting === 'true' && seeTest === 'false'){
-                                console.log('självrättande ja, se resultat nej');
-
-                                newContent += '<h2 class="testName">' + activeTestName + '</h2>';
-                                newContent += '<p>Prover har skickats in.</p>';
-                                newContent += '<p>Ditt resultat och betyg kommer att synas på portalen när tiden för provet har gått ut!</p>';
-                                newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
-                            }
-                            else if (selfCorrecting === 'true' && seeTest === 'true'){
-                                console.log('självrättande ja, se resultat ja');
-
-                                newContent += '<h2 class="testName">' + activeTestName + '</h2>';
-                                newContent += '<p id="resultText"> 10 rätt av 25 möjliga</p>';
-                                newContent += '<p>Se rätt svar nedan:</p>';
-                                newContent += '<p class="theResults"> varje fråga med rätt och fel svar</p>';
-                                newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
-                            }
-
-                            else if (selfCorrecting === 'false' && seeTest === 'false'){
-                                console.log('självrättande nej, se resultat nej');
-
-                                newContent += '<h2 class="testName">' + activeTestName + '</h2>';
-                                newContent += '<p>Prover har skickats in.</p>';
-                                newContent += '<p>Ditt resultat och betyg kommer att synas på portalen så fort provet är rättat!</p>';
-                                newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
-                            }
-
-                            testBoxContent.html(newContent);
-
-                            $('#homePage').click(function () {
-                                console.log('reagerar');
-                                location.reload();
-                            });
-
-                        });
+                    });
 
                     });
 
+                //Clicking on finish test button
+                $(document).on('click', '#finishTest', function () {
+                    console.log('klickar på avsluta test');
+
+                    newContent = '';
+
+                    if (selfCorrecting === 'true' && seeTest === 'false'){
+                        console.log('självrättande ja, se resultat nej');
+
+                        newContent += '<h2 class="testName">' + activeTestName + '</h2>';
+                        newContent += '<p>Prover har skickats in.</p>';
+                        newContent += '<p>Ditt resultat och betyg kommer att synas på portalen när tiden för provet har gått ut!</p>';
+                        newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
+                    }
+                    else if (selfCorrecting === 'true' && seeTest === 'true'){
+                        console.log('självrättande ja, se resultat ja');
+
+                        newContent += '<h2 class="testName">' + activeTestName + '</h2>';
+                        newContent += '<p id="resultText"> 10 rätt av 25 möjliga</p>';
+                        newContent += '<p>Se rätt svar nedan:</p>';
+                        newContent += '<p class="theResults"> varje fråga med rätt och fel svar</p>';
+                        newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
+                    }
+
+                    else if (selfCorrecting === 'false' && seeTest === 'false'){
+                        console.log('självrättande nej, se resultat nej');
+
+                        newContent += '<h2 class="testName">' + activeTestName + '</h2>';
+                        newContent += '<p>Prover har skickats in.</p>';
+                        newContent += '<p>Ditt resultat och betyg kommer att synas på portalen så fort provet är rättat!</p>';
+                        newContent += '<input id="homePage" type="submit" value="Huvudsidan">';
+                    }
+
+                    testBoxContent.html(newContent);
+
+                    $('#homePage').click(function () {
+                        console.log('reagerar');
+                        location.reload();
                     });
 
                 });
+
+                });
+
+            var startTimer = setInterval(function () {
+
+                hour = Math.floor(time / 3600000);
+                min = Math.floor(time % 3600000 / 60000);
+                sec = time % 3600000 % 60000 / 1000;
+
+                testTimer.text("Hour: " + hour + " Min: " + min + " Sek: " + sec);
+
+                if (time <= 0){
+                    testTimer.hide();
+                    $('#nextQuestion').hide();
+                    $('#finishTest').show();
+                    clearInterval(startTimer);
+                }
+
+                time -= 1000;
+
+            }, 1000);
 
         });
 
