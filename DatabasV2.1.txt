@@ -21,7 +21,7 @@ USE TestVerktyg;
 	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin1Name', 'Admin1Name', 'Admin1@admin.se', 'AdminPassword1');
 	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin2Name', 'Admin2Name', 'Admin2@admin.se', 'AdminPassworw2');
 	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin3Name', 'Admin3Name', 'Admin3@admin.se', 'AdminPassword3');
-	
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('admin', 'admin', 'admin@admin.se', 'admin');
 	CREATE TABLE Teacher(
 		teacherId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		firstName VARCHAR(50) NOT NULL,
@@ -33,7 +33,7 @@ USE TestVerktyg;
 	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher1', 'Teacher1',  'Teacher1@teacher.se', 'TeacherPassword1');
 	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher2', 'Teacher2', 'Teacher2@teacher.se', 'TeacherPassword2');
 	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher3', 'Teacher3', 'Teacher3@teacher.se', 'TeacherPassword3');
-	
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('teacher', 'teacher', 'teacher@teacher.se', 'teacher');
 	CREATE TABLE Student(
 		studentId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		firstName VARCHAR(50) NOT NULL,
@@ -46,7 +46,7 @@ USE TestVerktyg;
 	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName1', 'StudentName1', 'Student1@student.se', 'StudentPassword1', 'Klass1');
 	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName2', 'StudentName2', 'Student2@student.se', 'StudentPassword2', 'Klass2');
 	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName3', 'StudentName3','Student3@student.se', 'StudentPassword3', 'Klass3');
-
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('student', 'student','student@student.se', 'student', 'Java2');
 	
 	 
 	/* Class är för att veta om det är Admin  / Teacher / Student*/
@@ -62,9 +62,9 @@ USE TestVerktyg;
 		timeForTestMINUTES VARCHAR(50) NOT NULL
 	); 
 
-	Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName1', 'TestDate1', 'true', 'false', '120');
+	/*Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName1', 'TestDate1', 'true', 'false', '120');
 	Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName2', 'TestDate2', 'false', 'true', '60');
-	Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName3', 'TestDate3', 'true', 'false', '30');
+	Insert into test (testName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName3', 'TestDate3', 'true', 'false', '30');*/
 
 	
 	
@@ -83,9 +83,9 @@ USE TestVerktyg;
 		gradeVg VARCHAR(10) NOT NULL
 	); 
 	
-	Insert into Question (testId, typeOfQuestion, QuestionText) VALUES('1', 'Type1', 'Bla Bla Bla 1');
+	/*Insert into Question (testId, typeOfQuestion, QuestionText) VALUES('1', 'Type1', 'Bla Bla Bla 1');
 	Insert into Question (testId, typeOfQuestion, QuestionText) VALUES('2', 'Type2', 'Bla Bla Bla 2');
-	Insert into Question (testId, typeOfQuestion, QuestionText) VALUES('3', 'Type3', 'Bla Bla Bla 3');
+	Insert into Question (testId, typeOfQuestion, QuestionText) VALUES('3', 'Type3', 'Bla Bla Bla 3');*/
 
 	
 	CREATE TABLE Answers(
@@ -95,9 +95,9 @@ USE TestVerktyg;
 		answerText VARCHAR(50) NOT NULL
 	);
 	
-	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('1', 'false', 'Bla Bla Bla 1');
+	/*Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('1', 'false', 'Bla Bla Bla 1');
 	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('2', 'true', 'Bla Bla Bla 2');
-	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('3', 'false', 'Bla Bla Bla 3');
+	Insert into Answers (QuestionId, AnswerStatus, AnswerText) VALUES('3', 'false', 'Bla Bla Bla 3');*/
 	
 	CREATE TABLE StudentTests(
 		StudentTestsId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -105,9 +105,9 @@ USE TestVerktyg;
 		TestId INT(10) NOT NULL
 	);
 
-	Insert into StudentTests (StudentId, TestId) VALUES('1', '1');
+	/*Insert into StudentTests (StudentId, TestId) VALUES('1', '1');
 	Insert into StudentTests (StudentId, TestId) VALUES('2', '2');
-	Insert into StudentTests (StudentId, TestId) VALUES('3', '3');
+	Insert into StudentTests (StudentId, TestId) VALUES('3', '3');*/
 	
 	CREATE TABLE StudentAnswers(
 		StudentAnswersId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -117,9 +117,9 @@ USE TestVerktyg;
 		AnswersId INT(10) NOT NULL
 	);
 
-	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('1', '1', '1', '1');
+	/*Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('1', '1', '1', '1');
 	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('2', '2', '2', '2');
-	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('3', '3', '3', '2');
+	Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('3', '3', '3', '2');*/
 	
 	CREATE TABLE CourseCodes(
 		courseCodeId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

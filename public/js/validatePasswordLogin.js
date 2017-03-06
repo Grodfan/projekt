@@ -17,6 +17,8 @@ $("#loginForm").on('submit',function(e) {
         var status = data[0].password;
         console.log(data[0].password);
         if (status === inputPassword) {
+            sessionStorage.setItem('studentEmail',$email.val());
+            console.log($email.serialize());
             $email.val('');
             $password.val('');
             window.location.href = '/student';

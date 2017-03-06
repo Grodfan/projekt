@@ -16,9 +16,22 @@ var teacherPassword = require('./models/validateTeacherPassword');
 var studentPassword = require('./models/validateStudentPassword');
 var adminPassword = require('./models/validedateAdminPassword');
 var admin = require('./models/admin');
+var student = require('./models/student');
 
 module.exports = {
   configure: function (app) {
+
+      app.post('/getStudentTest/', function (req,res) {
+          student.getStudentTest(req.body.email, res);
+      });
+
+      app.post('/getStudentTestQuestions/', function (req,res) {
+          student.getStudentTestQuestions(req.body.testId, res);
+      });
+
+      app.post('/getQuestionsAnswers/', function (req,res) {
+          student.getQuestionsAnswers(req.body.questionId, res);
+      });
 
       app.post('/getStudentIds/', function (req,res) {
           admin.getStudentIds(req.body.klass, res);
@@ -117,7 +130,7 @@ module.exports = {
       });
 
       app.get('/student', function (req,res) {
-          res.sendFile(__dirname+'/public/studentIndex.html');
+          res.sendFile(__dirname+'/public/indexStudentExample.html');
       });
 
       app.get('/admin', function (req,res) {
@@ -125,7 +138,7 @@ module.exports = {
       });
 
       app.get('/teacher', function (req,res) {
-          res.sendFile(__dirname+'/public/teacherIndex.html');
+          res.sendFile(__dirname+'/public/indexTeacher.html');
       });
 
       //----------------------------------------------------------------------------------------------------------------
