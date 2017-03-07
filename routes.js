@@ -18,6 +18,9 @@ var adminPassword = require('./models/validedateAdminPassword');
 var admin = require('./models/admin');
 var student = require('./models/student');
 
+// Hack
+var statistics = require('./models/statistics')
+
 module.exports = {
   configure: function (app) {
 
@@ -165,7 +168,7 @@ module.exports = {
           getDataMysql.getQuestion(res);
       });
 
-      app.get('/select*answers/', function(req, res) {'' +
+      app.get('/select*answers/', function(req, res) {
           getDataMysql.getAnswers(res);
       });
 
@@ -178,6 +181,11 @@ module.exports = {
       });
 
       //----------------------------------------------------------------------------------------------------------------
+
+      app.get('/getStatistics', function(req, res) {
+          /* Här använder jag metoden som implementerar mitt SQL-uyttryck (.selectHack) */
+          statistics.getNewStatistics(res, req.query.testID);
+      });
 
   }
 };
