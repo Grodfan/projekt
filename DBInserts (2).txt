@@ -1,0 +1,192 @@
+/*
+	SOURCE C:\Users\Henrik\Desktop\DBInserts2-kopia.txt
+	SOURCE C:\Users\Jonas\Desktop\Projekt\projekt\projekt\DatabasV2.1.txt
+	SOURCE C:\GithubProjects\projekt\DatabasV2.1.txt
+	SOURCE C:\GithubProjects\projekt\DatabasV2.1.txt
+	
+*/
+
+DROP Database IF EXISTS TestVerktyg;
+CREATE Database IF NOT EXISTS TestVerktyg;
+USE TestVerktyg;
+
+
+	CREATE TABLE AdminUser(
+		adminId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		firstName VARCHAR(50) NOT NULL,
+		lastName VARCHAR(50) NOT NULL,
+		email VARCHAR(50) NOT NULL,
+		password VARCHAR(50) NOT NULL
+	); 
+
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin1Name', 'Admin1Name', 'Admin1@admin.se', 'AdminPassword1');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin2Name', 'Admin2Name', 'Admin2@admin.se', 'AdminPassworw2');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin3Name', 'Admin3Name', 'Admin3@admin.se', 'AdminPassword3');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('admin', 'admin', 'admin@admin.se', 'admin');
+	
+	CREATE TABLE Teacher(
+		teacherId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		firstName VARCHAR(50) NOT NULL,
+		lastName VARCHAR(50) NOT NULL,
+		email VARCHAR(50) NOT NULL,
+		password VARCHAR(50) NOT NULL
+	); 
+
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher1', 'Teacher1',  'Teacher1@teacher.se', 'TeacherPassword1');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher2', 'Teacher2', 'Teacher2@teacher.se', 'TeacherPassword2');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher3', 'Teacher3', 'Teacher3@teacher.se', 'TeacherPassword3');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('teacher', 'teacher', 'teacher@teacher.se', 'teacher');
+	
+	CREATE TABLE Student(
+		studentId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		firstName VARCHAR(50) NOT NULL,
+		lastName VARCHAR(50) NOT NULL,
+		email VARCHAR(50) NOT NULL,
+		password VARCHAR(50) NOT NULL,
+		klass VARCHAR(50) NOT NULL 
+	); 
+	
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName1', 'StudentName1', 'Student1@student.se', 'StudentPassword1', 'Klass1');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName2', 'StudentName2', 'Student2@student.se', 'StudentPassword2', 'Klass2');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName3', 'StudentName3','Student3@student.se', 'StudentPassword3', 'Klass3');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('student', 'student','student@student.se', 'student', 'Java2');
+	
+	 
+	/* Class är för att veta om det är Admin  / Teacher / Student*/
+   	/*lägga till en kalss tabell*/
+	
+	CREATE TABLE Test(
+		TestId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		testName VARCHAR(50) NOT NULL,
+		courseName VARCHAR(30) NOT NULL,
+		selfCorrect VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
+		seeTestAfter VARCHAR(50) NOT NULL, /*TRUE OR FALSE */
+		lastDate VARCHAR(50) NOT NULL,
+		timeForTestMINUTES VARCHAR(50) NOT NULL
+	); 
+
+	Insert into test (testName, courseName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName1', 'Kurs 1', 'TestDate1', 'true', 'false', '120');
+	Insert into test (testName, courseName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName2', 'Kurs 1', 'TestDate2', 'false', 'true', '60');
+	Insert into test (testName, courseName, LastDate, SelfCorrect, seeTestafter, TimeForTestMinutes) VALUES('TestName3', 'Kurs 1', 'TestDate3', 'true', 'false', '30');
+
+	
+	
+	/* 
+		YES NO QUESTION 
+		ORDER QUESTION
+		OPTIONS QUESTION
+	*/	
+	
+	CREATE TABLE Question(
+		questionid INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		TestId INT(10) NOT NULL,
+		typeOfQuestion VARCHAR(50) NOT NULL,
+		questionText VARCHAR(100) NOT NULL,
+		gradeG VARCHAR(10) NOT NULL,
+		gradeVg VARCHAR(10) NOT NULL
+	); 
+	
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('1', 'Type2', 'Bla Bla Bla 2', 'true', 'false');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('1', 'Type3', 'Bla Bla Bla 3', 'true', 'false');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('1', 'Type1', 'Bla Bla Bla 1', 'false', 'true');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('1', 'Type2', 'Bla Bla Bla 2', 'false', 'true');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('1', 'Type3', 'Bla Bla Bla 3', 'true', 'false');
+	
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('2', 'Type3', 'Bla Bla Bla 3', 'true', 'false');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('2', 'Type1', 'Bla Bla Bla 1', 'false', 'true');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('2', 'Type2', 'Bla Bla Bla 2', 'true', 'false');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('2', 'Type3', 'Bla Bla Bla 3', 'true', 'false');
+	Insert into Question (TestId, typeOfQuestion, QuestionText, gradeG, gradeVg) VALUES('2', 'Type1', 'Bla Bla Bla 1', 'false', 'true');
+	
+
+	
+	CREATE TABLE Answers(
+		answersId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		questionId INT(10) NOT NULL,
+		answerStatus VARCHAR(50) NOT NULL,
+		answerText VARCHAR(50) NOT NULL
+	);
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('1', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('1', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('1', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('2', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('2', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('2', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('3', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('3', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('3', 'false', 'Bla Bla Bla 3');
+
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('4', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('4', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('4', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('5', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('5', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('5', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('6', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('6', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('6', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('7', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('7', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('7', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('8', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('8', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('8', 'false', 'Bla Bla Bla 3');
+
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('9', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('9', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('9', 'false', 'Bla Bla Bla 3');
+	
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('10', 'false', 'Bla Bla Bla 1');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('10', 'true', 'Bla Bla Bla 2');
+	Insert into Answers (QuestionId, answerStatus, AnswerText) VALUES('10', 'false', 'Bla Bla Bla 3');
+
+	CREATE TABLE StudentTests(
+		StudentTestsId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		StudentId INT(10) NOT NULL,
+		TestId INT(10) NOT NULL
+	);
+
+	Insert into StudentTests (StudentId, TestId) VALUES('1', '1');
+	Insert into StudentTests (StudentId, TestId) VALUES('1', '2');
+	Insert into StudentTests (StudentId, TestId) VALUES('3', '3');
+	
+	CREATE TABLE StudentAnswers(
+		StudentAnswersId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		StudentId INT(10) NOT NULL,
+		testid INT(10) NOT NULL,
+		QuestionId INT(10) NOT NULL,
+		AnswersId INT(10) NOT NULL
+	);
+
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '1', '1', '2');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '1', '2', '5');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '1', '3', '7');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '1', '2', '12');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '1', '3', '14');
+	
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '2', '1', '17');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '2', '2', '20');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '2', '3', '23');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '2', '2', '24');
+	Insert into StudentAnswers (StudentId, testid, QuestionId, AnswersId) VALUES('1', '2', '3', '29');
+	
+	CREATE TABLE CourseCodes(
+		courseCodeId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		courseCode VARCHAR(30) NOT NULL
+	);
+	
+	CREATE TABLE ListClasses(
+		classId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		listClass VARCHAR(30) NOT NULL
+	);
+	
+	INSERT INTO CourseCodes(courseCode) VALUES('YJAV-WEB');
+	INSERT INTO ListClasses(listClass) VALUES('Java2');
+	
