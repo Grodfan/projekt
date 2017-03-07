@@ -36,6 +36,12 @@ header.pageDesign{
     margin-right: 5px;
 }
 /*--Test---*/
+h1.box{
+    border: solid 1px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+}
 section.box{
     border: solid 1px;
     margin-bottom: 10px;
@@ -84,6 +90,9 @@ button.start{
 button.previuosQuestion{
     margin-right: 10px;
 }
+button.testResult{
+    float: right;
+}
 .dateWidth{
     width: 80px;
 }
@@ -118,11 +127,20 @@ li.adminTest{
     display: inline;
     margin-right: 20px;
 }
+ol.register{
+    border: solid 1px black;
+    background-color: white;
+    margin-bottom: 3px;
+    width: 50%;
+}
 .floatRight{
     float: right;
 }
 .hidden{
     display:none;
+}
+#endTest{
+    margin-left: 20px;
 }
 /*----test-stop--*/
 
@@ -182,4 +200,29 @@ li.adminTest{
     background-color: #fffdfd;
     width: 30%;
     margin: 0 auto;
+}
+
+#studentCss {
+    width: 100%;
+    background: white;
+
+}
+
+#studentTableHead {
+    text-align: left;
+}
+
+#teacherCss {
+    width: 100%;
+}
+
+#teacherTableHead {
+    text-align: left;
+}
+
+#adminCss {
+    width: 100%;
+}
+#adminTableHead {
+    text-align: left;
 }

@@ -21,6 +21,30 @@ var student = require('./models/student');
 module.exports = {
   configure: function (app) {
 
+      app.post('/getGrades/', function (req,res) {
+          student.getGrades(req.body.questionId, res);
+      });
+
+      app.post('/getStudentTestsDone/', function (req,res) {
+          student.getStudentTestsDone(req.body.StudentId, res);
+      });
+
+      app.post('/getRightAnswers/', function (req,res) {
+          student.getRightAnswers(req.body.answersId, res);
+      });
+
+      app.post('/getStudenAnswers/', function (req,res) {
+          student.getStudenAnswers(req.body.StudentId, res);
+      });
+
+      app.post('/studentAnswers/', function (req,res) {
+          student.studentAnswers(req.body, res);
+      });
+
+      app.post('/getStudentId/', function (req,res) {
+          student.getStudentId(req.body.email, res);
+      });
+
       app.post('/getStudentTest/', function (req,res) {
           student.getStudentTest(req.body.email, res);
       });
@@ -165,7 +189,7 @@ module.exports = {
           getDataMysql.getQuestion(res);
       });
 
-      app.get('/select*answers/', function(req, res) {'' +
+      app.get('/select*answers/', function(req, res) {
           getDataMysql.getAnswers(res);
       });
 
