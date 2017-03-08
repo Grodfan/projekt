@@ -157,11 +157,11 @@ module.exports = {
       });
 
       app.get('/student', function (req,res) {
-          res.sendFile(__dirname+'/public/indexStudentExample.html');
+          res.sendFile(__dirname+'/public/indexStudent.html');
       });
 
       app.get('/admin', function (req,res) {
-          res.sendFile(__dirname+'/public/adminIndex.html');
+          res.sendFile(__dirname+'/public/indexAdmin.html');
       });
 
       app.get('/teacher', function (req,res) {
@@ -202,6 +202,10 @@ module.exports = {
 
       app.get('/select*studentanswers/', function(req, res) {
           getDataMysql.getStudentAnswers(res);
+      });
+
+      app.get('/StudentAnswers/', function(req, res) {
+          getDataMysql.getSAnswers(res);
       });
 
       //----------------------------------------------------------------------------------------------------------------

@@ -86,12 +86,14 @@ button.assign{
 button.start{
     float: right;
     margin-left: 20px;
+    background-color: rgba(139, 228, 94, 0.6);
 }
 button.previuosQuestion{
     margin-right: 10px;
 }
 button.testResult{
     float: right;
+    background-color: rgba(228,204,91,0.6);
 }
 .dateWidth{
     width: 80px;

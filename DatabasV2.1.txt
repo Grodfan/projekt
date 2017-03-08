@@ -18,9 +18,9 @@ USE TestVerktyg;
 		password VARCHAR(50) NOT NULL
 	); 
 
-	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin1Name', 'Admin1Name', 'Admin1@admin.se', 'AdminPassword1');
-	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin2Name', 'Admin2Name', 'Admin2@admin.se', 'AdminPassworw2');
-	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Admin3Name', 'Admin3Name', 'Admin3@admin.se', 'AdminPassword3');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Peter', 'Svensson', 'peter@svensson.se', 'peter');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Henrik', 'Larsson', 'henrik@larsson.se', 'henrik');
+	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('Josefin', 'Andersson', 'josefin@andersson.se', 'josefin');
 	INSERT into AdminUser (FirstName, LastName, Email, Password) VALUES('admin', 'admin', 'admin@admin.se', 'admin');
 	CREATE TABLE Teacher(
 		teacherId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -30,9 +30,9 @@ USE TestVerktyg;
 		password VARCHAR(50) NOT NULL
 	); 
 
-	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher1', 'Teacher1',  'Teacher1@teacher.se', 'TeacherPassword1');
-	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher2', 'Teacher2', 'Teacher2@teacher.se', 'TeacherPassword2');
-	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Teacher3', 'Teacher3', 'Teacher3@teacher.se', 'TeacherPassword3');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Jerry', 'Johansson',  'jerry@johansson.se', 'jerry');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Tompa', 'tompa', 'tompa@tompa.se', 'tompa');
+	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('Göran', 'Svensson', 'goran@svensson.se', 'goran');
 	INSERT into Teacher (FirstName, LastName, Email, Password) VALUES('teacher', 'teacher', 'teacher@teacher.se', 'teacher');
 	CREATE TABLE Student(
 		studentId INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -43,9 +43,9 @@ USE TestVerktyg;
 		klass VARCHAR(50) NOT NULL 
 	); 
 	
-	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName1', 'StudentName1', 'Student1@student.se', 'StudentPassword1', 'Klass1');
-	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName2', 'StudentName2', 'Student2@student.se', 'StudentPassword2', 'Klass2');
-	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('StudentName3', 'StudentName3','Student3@student.se', 'StudentPassword3', 'Klass3');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('Lisa', 'Karlsson', 'lisa@student.se', 'lisa', 'Java1');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('Per', 'Svensson', 'per@student.se', 'per', 'Java2');
+	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('Carl', 'Larsson','carl@student.se', 'carl', 'Java2');
 	INSERT into Student (FirstName, LastName, Email, Password, Klass) VALUES('student', 'student','student@student.se', 'student', 'Java2');
 	
 	 
@@ -114,7 +114,7 @@ USE TestVerktyg;
 		StudentId INT(10) NOT NULL,
 		TestId INT(10) NOT NULL,
 		QuestionId INT(10) NOT NULL,
-		AnswersId INT(10) NOT NULL
+		answersId INT(10) NOT NULL
 	);
 
 	/*Insert into StudentAnswers (StudentId, TestId, QuestionId, AnswersId) VALUES('1', '1', '1', '1');

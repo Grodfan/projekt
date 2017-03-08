@@ -1,5 +1,6 @@
 /**
  * Created by Jonas on 2017-03-04.
+ * Visar vilka prov en elev kan göra och delta, samt se resultatet om det är möjligt.
  */
 var questionsData;
 var questionAnswers;
@@ -28,14 +29,12 @@ $(document).ready(function () {
     });
 
 
-
-
     $content.empty();
 
     $.post('http://127.0.0.1:8000/getStudentTest/',sqlEmail, function (data) {
         var sqlStudentId = {'StudentId'  : studentId };
         $.post('http://127.0.0.1:8000/getStudentTestsDone/',sqlStudentId, function (testsDoneStudent) {
-            console.log(testsDoneStudent)
+
         testData = data;
         for (var i in data) {
             testDone = false;
@@ -66,26 +65,43 @@ $(document).ready(function () {
             newContent += '<li class="adminTest"><b>Tid:</b> ' + data[i].timeForTestMINUTES + ' min</li>';
 
 
-
-                    for(var j = 0; j < testsDoneStudent.length; j++){
-                        if(testsDoneStudent[j].TestId == data[i].testId){
-                            newContent += '<button class="testResult">Result</button>';
-                            testDone = true;
-                            break;
-                        }
+            if(data[i].seeTestAfter === 'true') {
+                for (var j = 0; j < testsDoneStudent.length; j++) {
+                    if (testsDoneStudent[j].TestId == data[i].testId) {
+                        newContent += '<button class="testResult">Resultat</button>';
+                        testDone = true;
+                        break;
                     }
+                }
+            }
+            else if(data[i].seeTestAfter === 'false') {
+                for (var j = 0; j < testsDoneStudent.length; j++) {
+                    if (testsDoneStudent[j].TestId == data[i].testId) {
+                        testDone = true;
+                        break;
+                    }
+                }
+            }
+
         if(testDone === false){
             if(currentDay === data[i].lastDate){
                 newContent += '<button class="start">Starta</button>';
             }
         }
 
+            if(data[i].seeTestAfter === 'false'){
 
+                $content.find('.start').hide();
+
+            }
 
             newContent += '</ul></section>';
         }
 
         $content.append(newContent);
+
+
+
         $content.find('.testIdValue').hide();
     });
 });
@@ -150,7 +166,7 @@ $(document).ready(function () {
 
             newContent += '</section>';
 
-            newContent += '<button class="previuosQuestion" id="previuosQuestion">Föregående</button>';
+           // newContent += '<button class="previuosQuestion" id="previuosQuestion">Föregående</button>';
             newContent += '<button id="nextQuestion">Nästa</button>';
             newContent += '<button class="floatRight" id="endTest">Avsluta</button>';
             newContent += '<span class="floatRight" id="time"></span>';
@@ -303,6 +319,9 @@ $(document).ready(function () {
     $content.on('click','#endTest', function () {
         testEnd();
     });
+
+
+
 });
 
 function returnQuestions(data){

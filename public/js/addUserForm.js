@@ -1,5 +1,7 @@
 /**
  * Created by Jonas on 2017-03-02.
+ * Formulär för att kunna lägga till och ta bort elev/admin/lärare från adminsidan.
+ *
  */
 
 
@@ -22,8 +24,8 @@ $(document).ready(function () {
         newContent += '<option value="student">Student</option>';
         newContent += '<option value="teacher">Lärare</option>';
         newContent += '<option value="admin">Admin</option>';
-        newContent += '<option value="klass">Klass</option>';
-        newContent += '<option value="courseCode">Kurskod</option>';
+       // newContent += '<option value="klass">Klass</option>';
+       // newContent += '<option value="courseCode">Kurskod</option>';
         newContent += '</select></section>';
 
         $content.append(newContent);

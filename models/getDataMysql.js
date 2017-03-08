@@ -78,6 +78,15 @@ function getData() {
         });
     };
 
+    this.getSAnswers = function (res) {
+        connection.acquire(function(err, con) {
+            con.query('SELECT * FROM StudentAnswers' , function(err, result) {
+                con.release();
+                res.send(result);
+            });
+        });
+    };
+
 
 
 };

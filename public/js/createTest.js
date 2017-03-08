@@ -164,7 +164,7 @@ $(document).ready(function () {
                     var sqlQuestionId = {'questionText': questionText};
                     getQuestionId++;
                 $.post('http://127.0.0.1:8000/getQuestionId/', sqlQuestionId, function (dataQ) {
-                   // console.log('Qid: ' + dataQ[0].questionId);
+
                     var questionId = dataQ[0].questionId;
                     var forTotal = total;
 
@@ -178,10 +178,8 @@ $(document).ready(function () {
 
                             if (k < (parseInt(getTotalQuestions)-1)) {
                                 forTotal++;
-                               // console.log('for ' + forTotal);
                             }
                             else {
-                                //console.log('break');
                                 break;
                             }
                         }
@@ -210,7 +208,7 @@ $(document).ready(function () {
             newContent += '<option value="empty"></option>';
             newContent += '<option value="multiple">Flervalsfråga</option>';
             newContent += '<option value="alternative">Alternativfråga</option>';
-            newContent += '<option value="ranking">Rangordningsfråga</option>';
+            //newContent += '<option value="ranking">Rangordningsfråga</option>';
             newContent += '</select>';
             newContent += ' G<input id="gradeG" type="checkbox" name="gradeG" value="gradeG">';
             newContent += 'VG<input id="gradeVg" type="checkbox" name="gradeVg" value="gradeVg">';
