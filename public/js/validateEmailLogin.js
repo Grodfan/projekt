@@ -1,5 +1,6 @@
 /**
  * Created by Jonas on 2017-02-23.
+ * Kontrollerar email vid login.
  */
 $("#email").blur(function(e) {
     e.preventDefault();

@@ -1,5 +1,6 @@
 /**
  * Created by Jonas on 2017-02-22.
+ * Kontrollerar om email redan finns.
  */
 $(document).ready(function () {
     var $content = $('#content');

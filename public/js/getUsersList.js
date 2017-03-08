@@ -1,4 +1,8 @@
-
+/*
+* Leon och Henrik.
+* Register på adminsidan som visar lärare/elev/admin.
+*
+* */
 
 $(document).ready(function () {
     var $content = $('#content');

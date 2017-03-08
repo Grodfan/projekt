@@ -1,5 +1,6 @@
 /**
  * Created by Jonas on 2017-02-23.
+ * Kontrollerar lösenord vid login och skickar vidare till rätt sida.
  */
 $("#loginForm").on('submit',function(e) {
     e.preventDefault();

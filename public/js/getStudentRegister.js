@@ -1,5 +1,6 @@
 /**
- * Created by Jonas on 2017-03-07.
+ * Created by Lean och Henrik on 2017-03-07.
+ * Listar alla elever.
  */
 $(document).ready(function () {
     var $content = $('#content');
